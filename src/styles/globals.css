@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+:root {
+  /* Colores principales */
+  --color-primary: #484e19;
+  --color-secondary: #65762a;
+  --color-tertiary: #8a9a4d;
+
+  /* Color complementario */
+  --color-complementary: #ff8800;
+  --color-complementary-hover: #b65e00;
+
+  --footer-border-color: #FFF;
+
+  /* Fondos */
+  --color-background: #1c1c1c;
+  --color-background-linear-start: #131313;
+  --color-background-linear-end: #000000;
+
+  --color-background-transparent: rgba(30, 30, 30, 0.5);
+
+  /* Card Plans colors */
+  
+  --complete-plan-card-color: #00FF6A;
+  --pro-plan-card-color: #6600ff;
+
+  /* Botones */
+  --button-bg-color: #363636;
+  --button-icon-color: #6a6a6a;
+
+  --button-bg-hover: #202020;
+  --button-icon-hover: #a7a7a7;
+
+  --button-bg-active: #ffffff;
+  --button-icon-active: #363636;
+
+  /* Inputs */
+
+  --input-font-color: #131313;
+
+  --focus-input-color: #000;
+  --enabled-input-bg-color: #dee1e2;
+  --disabled-input-bg-color: #363636;
+
+  --outline-line-color: #131313;
+
+  /* Texto e íconos */
+  --icon-color: #ffffff;
+  --font-color: #ffffff;
+}
+
+html,
+body {
+  position: relative;
+  background-color: var(--color-background);
+  font-family: "Noto Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+  font-size: 1rem;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+strong {
+  color: var(--color-complementary) !important;
+}
+
+/* Scrollbar para Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 12px; /* ancho de la barra lateral */
+  background: transparent; /* fondo por defecto transparente */
+}
+
+/* Fondo de la barra (track) */
+::-webkit-scrollbar-track {
+  background: transparent; /* transparente por defecto */
+}
+
+/* El "thumb" (el elemento que arrastras) */
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary); /* rojo semi-transparente */
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+/* Al pasar el ratón por encima del thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary); /* verde más fuerte al hacer hover */
+}
+
+/* Opcional: track con color al hacer hover en toda la barra */
+::-webkit-scrollbar-track:hover {
+  background: var(
+    --color-primary
+  ); /* verde suave cuando pasas sobre el track */
+}
+
+/* Scrollbar para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent; /* thumb | track */
+}

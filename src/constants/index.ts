@@ -1,0 +1,1 @@
+export { SOCIAL_MEDIA } from './constants'

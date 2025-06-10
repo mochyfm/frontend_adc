@@ -1,0 +1,141 @@
+/* PlanCard.css */
+.plan-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  min-width: 350px; /* Mejor un min-width menor que max-width */
+  margin: 2rem 1em;
+  margin-top: 0rem;
+  color: var(--font-color);
+  border: 2px solid var(--color-complementary);
+  border-radius: 30px;
+  min-height: 900px;
+  padding: 15px 30px 30px 30px;
+  position: relative;
+}
+
+.plan-card-label {
+  background-color: var(--color-complementary);
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 2px 10px;
+  margin: 0 auto 10px auto;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.plan-card-title {
+  font-size: 2.5rem;
+  margin-top: 60px;
+  margin-bottom: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Quantico", "Noto Sans", sans-serif;
+  font-weight: 900;
+}
+
+.plan-card-attribute {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.plan-card-attribute:last-of-type {
+  margin-bottom: 50px;
+}
+
+.plan-card-attribute-icon {
+  color: var(--color-complementary);
+  margin-right: 30px;
+  font-size: 24px;
+}
+
+.plan-card-attribute-text {
+  font-weight: 700;
+  font-family: "League Spartan", "Noto Sans", sans-serif;
+  font-size: 1.2rem;
+}
+
+.plan-card-button {
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px;
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  width: 100%;
+  border: 2px solid var(--color-complementary);
+  margin-top: auto;
+  background: transparent;
+  color: var(--font-color);
+  cursor: pointer;
+  transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.positive {
+    opacity: 1;
+}
+
+.negative {
+    opacity: 0.5;
+}
+
+.plan-card-button:hover {
+  background: var(--color-complementary);
+  color: var(--font-color);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.08);
+  border-color: var(--color-complementary);
+}
+
+/* COMPLETE PLAN */
+.plan-card.complete-plan-card,
+.plan-card-button.complete-plan-card {
+  border-color: var(--complete-plan-card-color);
+}
+
+.plan-card.complete-plan-card strong,
+.plan-card-attribute-icon.complete-plan-card {
+  color: var(--complete-plan-card-color) !important;
+}
+
+.plan-card-label.complete-plan-card {
+  background-color: var(--complete-plan-card-color);
+}
+
+.plan-card-button.complete-plan-card:hover {
+  background: var(--complete-plan-card-color);
+  border-color: var(--complete-plan-card-color);
+  color: var(--font-color);
+}
+
+/* PRO PLAN */
+.plan-card.pro-plan-card,
+.plan-card-button.pro-plan-card {
+  border-color: var(--pro-plan-card-color);
+}
+
+.plan-card.pro-plan-card strong,
+.plan-card-attribute-icon.pro-plan-card {
+  color: var(--pro-plan-card-color) !important;
+}
+
+.plan-card-label.pro-plan-card {
+  background-color: var(--pro-plan-card-color);
+}
+
+.plan-card-button.pro-plan-card:hover {
+  background: var(--pro-plan-card-color);
+  border-color: var(--pro-plan-card-color);
+  color: var(--font-color);
+}

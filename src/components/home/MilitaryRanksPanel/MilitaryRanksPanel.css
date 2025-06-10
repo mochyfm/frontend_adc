@@ -1,0 +1,131 @@
+/* Panel principal */
+.military-panel {
+  position: relative;
+  width: 90%;
+  min-height: 85vh;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background: linear-gradient(
+    to bottom,
+    var(--color-background-linear-end) 10%,
+    var(--color-background) 40%
+  );
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.military-panel {
+  position: relative; /* importante para posicionar el svg */
+}
+
+/* Botonera derecha */
+.military-button-panel {
+  position: absolute;
+  top: 30%;
+  right: -1.5%;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.military-button-panel a {
+  width: 100px;
+  height: 100px;
+  font-size: 60px;
+  border-radius: 30px;
+  margin: 15px 0;
+  background-color: var(--button-bg-color);
+  color: var(--button-icon-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.military-button-panel a.active {
+  background-color: var(--button-bg-active);
+  color: var(--button-icon-active);
+}
+
+.military-button-panel a:hover {
+  background-color: var(--button-bg-hover);
+  color: var(--button-icon-hover);
+}
+
+.background-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-background);
+  border-radius: 40px;
+  filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  transition: opacity 0.5s ease;
+}
+
+.ranks-block h4 {
+  text-align: center;
+  font-family: "Quantico", sans-serif;
+  font-size: 58px;
+  color: var(--font-color);
+  text-transform: uppercase;
+  opacity: 0;
+}
+
+.military-central-panel {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.military-central-panel h5 {
+  text-align: center;
+  letter-spacing: 15px;
+}
+
+.army-icon {
+  width: 75px;
+  height: 70px;
+  transition: transform 0.2s ease, filter 0.3s ease;
+  filter: brightness(0) invert(1); /* blanco puro */
+}
+
+.tierra-icon {
+  width: 80px;
+  height: 80px;
+}
+
+.imt-icon {
+  width: 60px;
+  height: 90px;
+}
+
+.aire-icon {
+  height: 80px;
+  width: 80px;
+}
+
+.military-button-panel a.active .army-icon {
+  filter: brightness(0) invert(1) grayscale(1) brightness(0.3);
+}
+
+@media (max-width: 1500px) {
+  .military-button-panel {
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+}

@@ -1,0 +1,175 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  min-height: 50vh;
+  background-color: var(--color-background-linear-end);
+  border-top: 2px solid var(--footer-border-color);
+  color: var(--font-color);
+  justify-content: space-around;
+  font-family: "League Spartan", "Noto Sans", sans-serif;
+  padding: 2rem;
+}
+
+/* Contenedor principal de las columnas y descripción */
+.footer-body {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap; 
+}
+
+/* Primera columna: logo + descripción */
+.footer .col-1 {
+  flex: 3;
+  margin-left: 6rem; 
+}
+
+.footer .col-1 img {
+  margin-bottom: 1.875rem; 
+}
+
+.footer-body-description {
+  margin-top: 1.25rem; 
+  font-size: 1.25rem; 
+  width: 50%;
+  letter-spacing: 2.5px;
+}
+
+/* Columnas 2 y 3 */
+.footer .col-2,
+.footer .col-3 {
+  flex: 1;
+}
+
+/* Cada columna interna */
+.footer .col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 1.125rem; 
+  margin-top: 3.125rem; 
+  gap: 1.5625rem;
+}
+
+.footer .col h5 {
+  font-weight: 900;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem; 
+}
+
+
+.footer .col a {
+  transition: color 0.3s ease-in;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer .col a:hover:not(.footer-button) {
+  color: var(--color-complementary);
+}
+
+.footer-rrss a {
+  display: inline-block;
+  transition: transform 0.6s ease-in-out;
+}
+
+.footer-rrss a:hover {
+  transform: rotate(360deg);
+}
+
+/* Botón especial en footer */
+.footer a.footer-button {
+  display: flex;
+  margin-top: 3.125rem;
+  border-radius: 0.9375rem;
+  border: 2px solid var(--footer-border-color);
+  padding: 0.625rem 1.25rem;
+  font-size: 1.1875rem;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer a.footer-button svg {
+  margin-left: 0.625rem;
+  margin-bottom: 0.3125rem;
+}
+
+.footer a.footer-button:hover {
+  cursor: pointer;
+  background-color: var(--footer-border-color);
+  color: var(--color-background-linear-end);
+}
+
+
+.footer-rrss {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.5rem;
+  margin-top: 3.125rem;
+}
+
+.footer-rrss svg {
+  margin: 0 0.625rem;
+}
+
+/* Marca de agua o copyright centrado */
+.footer-body-water-mark {
+  margin: 2rem auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.footer-body-water-mark p {
+  margin: 0;              
+  font-size: 0.875rem;   
+  color: var(--font-color);
+}
+
+.footer-body-water-mark span {
+  margin-left: 0.25rem;
+  display: inline-block;
+}
+
+.footer-body-water-mark p:last-of-type {
+  margin-top: 1rem;
+}
+
+/* Media queries para responsive */
+@media (max-width: 768px) {
+  .footer-body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer .col-1 {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .footer-body-description {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .footer .col-2,
+  .footer .col-3 {
+    width: 100%;
+  }
+
+  .footer .col {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer a.footer-button {
+    justify-content: center;
+  }
+}

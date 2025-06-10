@@ -1,0 +1,131 @@
+.central-home-panel {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.central-text {
+  font-size: 64px;
+  font-family: "Quantico", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--font-color);
+  white-space: nowrap; /* Evita que se parta la línea en escritorio */
+}
+
+.central-button-panel {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.central-button-panel a {
+  display: flex;
+  align-items: center;
+  color: var(--font-color);
+  text-decoration: none;
+  font-size: 32px;
+  padding: 15px 40px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-startNow {
+  background-color: var(--color-complementary);
+  margin-right: 25px;
+}
+
+.btn-startNow:hover,
+.btn-startNow:focus {
+  background-color: var(--color-complementary-hover);
+  outline: none;
+}
+
+.btn-meritCalc {
+  background-color: var(--color-primary);
+  margin-left: 25px;
+}
+
+.btn-meritCalc:hover,
+.btn-meritCalc:focus {
+  background-color: var(--color-secondary);
+  outline: none;
+}
+
+.central-button-panel svg {
+  margin-left: 10px;
+}
+
+.typing-cursor {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: var(--color-complementary);
+  animation: blink 1s steps(2, start) infinite;
+  user-select: none;
+  margin-left: 5px; /* Para separar un poco el cursor del texto */
+}
+
+/* Media queries */
+
+@media (max-width: 850px) {
+  .central-home-panel {
+    justify-content: center;
+    margin: 0;
+  }
+
+  .central-text {
+    text-align: center;
+    font-size: 50px;
+    white-space: normal; /* Permite que el texto se parta en varias líneas */
+  }
+
+  .central-button-panel {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .central-button-panel a {
+    font-size: 23px;
+    justify-content: center;
+  }
+
+  .central-button-panel a svg {
+    display: none;
+  }
+
+  .btn-meritCalc {
+    margin: 30px 0 0 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .central-text {
+    font-size: 40px !important;
+    white-space: normal; /* Aquí también para móviles */
+  }
+
+  .central-button-panel a {
+    font-size: 16px !important;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
+  .typing-cursor {
+    font-size: 1em; /* Ajusta el tamaño del cursor para móviles */
+  }
+}
+
+/* Cursor blink animation */
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}

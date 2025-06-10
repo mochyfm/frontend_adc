@@ -1,0 +1,41 @@
+.section {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  max-height: none;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.gradient1 {
+  background: linear-gradient(
+    to bottom,
+    var(--color-background) 0%,
+    var(--color-background-linear-start) 40%,
+    var(--color-background-linear-end) 90%
+  );
+}
+
+.gradient2 {
+  background-color: var(--color-background-linear-end);
+}
+
+.gradient3 {
+  background: linear-gradient(
+    to bottom,
+    var(--color-background-linear-end) 30%,
+    var(--color-background) 90%
+  );
+}
+
+.section:not(:first-of-type) {
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 850px) {
+  .section {
+    justify-content: center;
+  }
+}

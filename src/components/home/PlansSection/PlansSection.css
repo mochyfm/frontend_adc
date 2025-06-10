@@ -1,0 +1,24 @@
+/* PlansSection.css */
+.plans-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 150px;
+  width: 100%;
+}
+
+.plans-header {
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: var(--font-color);
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.plans-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+

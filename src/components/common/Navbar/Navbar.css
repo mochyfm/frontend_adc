@@ -1,0 +1,157 @@
+.navbar {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Quantico", "League Spartan", "Noto Sans", sans-serif;
+  margin: 25px 0;
+  align-self: flex-start;
+  z-index: 20;
+}
+
+.imgSection,
+.buttonSection {
+  display: flex;
+  align-items: center;
+}
+
+.imgSection img {
+  width: 85px;
+  height: 105px;
+  margin-left: 50px;
+}
+
+.buttonSection {
+  margin-right: 30px;
+}
+
+.navbar a {
+  color: var(--font-color);
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 24px;
+  transition: background-color 0.3s ease, color 0.2s ease,
+    border-color 0.2s ease;
+  cursor: pointer;
+  outline-offset: 3px;
+}
+
+.navbar a:focus {
+  outline: 2px solid var(--color-complementary);
+  outline-offset: 3px;
+}
+
+.btnLogin {
+  border-bottom: 3px solid var(--font-color);
+}
+
+.btnStartNow {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--font-color);
+  padding: 10px 25px;
+  border-radius: 5px;
+}
+
+.btnStartNow svg {
+  margin-left: 10px;
+}
+
+.navbar a:hover,
+.navbar a:focus {
+  color: var(--color-complementary);
+  border-color: var(--color-complementary);
+}
+
+.btnStartNow:hover,
+.btnStartNow:focus {
+  background-color: var(--color-complementary);
+  color: var(--font-color) !important;
+}
+
+/* Nuevo botón menú hamburguesa */
+.menuToggleBtn {
+  display: none; /* oculto por defecto */
+  background: none;
+  border: none;
+  color: var(--font-color);
+  cursor: pointer;
+  margin-right: 50px;
+  font-size: 28px;
+  z-index: 30;
+}
+
+@media (max-width: 780px) {
+  .buttonSection {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--color-background);
+    flex-direction: column;
+    width: 220px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+  }
+
+  .buttonSection.open {
+    display: flex;
+  }
+
+  .menuToggleBtn {
+    display: block;
+  }
+
+  .buttonSection a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 10px 20px;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border: none; /* quito bordes */
+    background: none; /* quito fondo */
+    font-size: 22px;
+  }
+
+  .buttonSection a:last-child {
+    border-bottom: none;
+  }
+
+  /* Quitar iconos dentro de .btnStartNow en menú hamburguesa */
+  .buttonSection a.btnStartNow svg {
+    display: none;
+  }
+
+  /* Quitar estilos específicos de btnLogin en menú hamburguesa */
+  .buttonSection a.btnLogin {
+    border-bottom: none;
+  }
+
+  /* Simplificar btnStartNow en menú hamburguesa */
+  .buttonSection a.btnStartNow {
+    border-radius: 0;
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  a.btnStartNow {
+    color: var(--color-complementary);
+  }
+
+  .btnStartNow:hover,
+  .btnStartNow:focus {
+    background-color: transparent;
+    color: var(--font-color);
+  }
+
+  .navbar a:hover,
+  .navbar a:focus {
+    border: none;
+    width: 100%;
+  }
+}

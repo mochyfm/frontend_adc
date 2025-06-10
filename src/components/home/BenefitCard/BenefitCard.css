@@ -1,0 +1,75 @@
+.benefit-card-body {
+  align-items: center;
+  border: 2px solid var(--color-complementary);
+  border-radius: 15px;
+  color: var(--font-color);
+  display: flex;
+  flex-direction: column;
+  font-family: "Quantico", "Noto Sans", sans-serif;
+  justify-content: center;
+  padding: 10px;
+  height: 300px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  transition: box-shadow 0.3s ease, transform 0.3s cubic-bezier(.4,2,.3,1);
+}
+
+.benefit-card-body:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-10px) scale(1.04);
+  cursor: default;
+}
+
+.benefit-card-title {
+  font-size: clamp(2rem, 2vw, 2.5rem);
+  margin: 20px 0px;
+  text-align: center;
+}
+
+.benefit-card-content {
+  font-size: clamp(1.5rem, 1.2vw, 2rem);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .benefit-card-title {
+    font-size: clamp(2rem, 2vw, 2.5rem);
+  }
+  .benefit-card-content {
+    font-size: clamp(1.1rem, 1.3vw, 1.25rem);
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1200px) {
+  .benefit-card-title {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+  }
+  .benefit-card-content {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+  }
+}
+
+@media (min-width: 500px) and (max-width: 700px) {
+  .benefit-card-title {
+    font-size: clamp(3rem, 6vw, 2.1rem);
+  }
+  .benefit-card-content {
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  }
+}
+
+@media (max-width: 500px) {
+  .benefit-card-title {
+    font-size: clamp(2rem, 6vw, 1.6rem);
+  }
+  .benefit-card-content {
+    font-size: clamp(1.25rem, 3.5vw, 1.07rem);
+  }
+}
+
+@media (max-width: 350px) {
+  .benefit-card-content {
+    font-size: clamp(0.85rem, 3vw, 1rem);
+  }
+}

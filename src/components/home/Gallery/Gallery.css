@@ -1,0 +1,214 @@
+.gallery-overlay-content {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 200;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* Para que no tape el scroll de la galería */
+
+  /* Fondo difuminado y semitransparente */
+  background: var(--color-background-transparent)
+}
+
+/* El contenido del overlay sí debe aceptar clicks (botones, enlaces, etc) */
+.gallery-overlay-content > * {
+  pointer-events: auto;
+  text-align: center;
+  color: #fff;
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+
+/* Ejemplo de botón */
+.gallery-overlay-content .gallery-btn {
+  margin-top: 2rem;
+  padding: 0.75em 2em;
+  background: var(--color-complementary);
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  transition: background 0.2s;
+}
+
+.gallery-overlay-content .gallery-header {
+  font-family: "League Spartan", "Noto Sans", sans-serif;
+  font-size: 4rem;
+  text-transform: uppercase;
+}
+
+.gallery-overlay-content .gallery-btn:hover {
+  background: var(--color-complementary-hover);
+}
+
+.gallery-slider-viewport {
+  width: 100%;
+  flex: 1 1 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.gallery-grid {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.gallery-col {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  gap: 10px;
+  min-width: 0;
+  max-width: none;
+  overflow: hidden;
+}
+
+/* Top y bottom con flex para repartir el espacio vertical */
+.gallery-col-type-1-top,
+.gallery-col-type-2-top,
+.gallery-col-type-3-grid {
+  flex: 5 1 0;
+  min-height: 0;
+  height: auto;
+  display: flex;
+}
+
+.gallery-col-type-1-bottom,
+.gallery-col-type-2-bottom {
+  flex: 2 1 0;
+  min-height: 0;
+  height: auto;
+  margin-top: 8px;
+  padding: 0 8px 8px 8px;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+/* Imágenes siempre se ajustan al contenedor */
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  background: #ececec;
+}
+
+/* ============================
+   ESTILOS PARA COLUMNA TYPE 1
+   ============================ */
+.gallery-col-type-1-top {
+  gap: 8px;
+  padding: 8px 8px 0 8px;
+}
+.gallery-col-type-1-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.gallery-col-type-1-left .gallery-img {
+  width: 100%;
+  height: 50%;
+}
+.gallery-col-type-1-right {
+  flex: 1;
+  display: flex;
+  height: 102%;
+}
+.gallery-col-type-1-right .gallery-img {
+  width: 100%;
+  height: 100%;
+}
+.gallery-col-type-1-bottom .gallery-img {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================
+   ESTILOS PARA COLUMNA TYPE 2
+   ============================ */
+.gallery-col-type-2-top {
+  gap: 8px;
+  padding: 8px 8px 0 8px;
+}
+.gallery-col-type-2-left {
+  flex: 2;
+  height: 100%;
+}
+.gallery-col-type-2-left .gallery-img {
+  width: 100%;
+  height: 100%;
+}
+.gallery-col-type-2-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+}
+.gallery-col-type-2-right .gallery-img {
+  width: 100%;
+  height: 50%;
+}
+.gallery-col-type-2-bottom .gallery-img {
+  width: 50%;
+  height: 100%;
+}
+
+/* ============================
+   ESTILOS PARA COLUMNA TYPE 3
+   ============================ */
+.gallery-col-type-3-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  padding: 8px;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.gallery-col-type-3-grid .gallery-img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 1600px) {
+  .gallery-col-type-3 {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .gallery-grid {
+    flex-direction: column;
+  }
+  .gallery-col {
+    min-height: 1000px;
+  }
+  .gallery-col-type-2 {
+    display: none;
+  }
+}

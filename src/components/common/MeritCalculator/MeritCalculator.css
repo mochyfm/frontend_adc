@@ -1,0 +1,84 @@
+.merit-calculator {
+  position: relative;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 100px;
+  border-radius: 15px;
+  background-color: color-mix(in srgb, var(--button-bg-color) 50%, transparent);
+  padding: 15px;
+}
+
+.merit-calculator h1 {
+  text-align: center;
+  font-size: 45px;
+  color: var(--font-color);
+  font-family: "Quantico", "Noto Sans", sans-serif;
+  text-transform: uppercase;
+  margin: 25px;
+}
+
+.merit-calculator-row {
+  text-align: center;
+  display: grid;
+  grid-row: auto;
+  grid-template-columns: 35% 15% 15% 25%;
+  grid-column-gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0px;
+  min-width: 1000px;
+  overflow: hidden;
+}
+
+.merit-calculator-row input {
+  background-color: var(--enabled-input-bg-color);
+  outline: none;
+  text-align: center;
+  border-radius: 5px;
+  padding: 2.5px;
+}
+
+.merit-calculator input[type="number"]:focus {
+  background-color: none;
+}
+
+.merit-calculator input:disabled {
+  background-color: var(--disabled-input-bg-color);
+}
+
+.merit-calculator-row.result {
+  display: grid;
+  grid-template-columns: 35% 15% 35% 15%;
+}
+
+.merit-calculator-row.result input {
+  margin-right: 30px;
+  text-align: center;
+}
+
+.merit-calculator-row.result button {
+  background-color: var(--color-primary);
+}
+
+.merit-calculator-row button {
+  border-radius: 5px;
+  padding: 5px 20px;
+  background-color: var(--color-complementary);
+}
+
+.merit-calculator-footer {
+  color: var(--font-color);
+  font-family: "League Spartan", "Noto Sans", sans-serif;
+  font-weight: lighter;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.merit-calculator-footer img {
+  margin-left: 20px;
+  width: 80px;
+}

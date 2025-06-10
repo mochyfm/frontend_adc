@@ -1,0 +1,51 @@
+.rank-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 150px;
+  height: 220px; /* Altura fija para evitar saltos */
+  box-sizing: border-box;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 10px;
+}
+
+/* Contenedor de la imagen uniforme */
+.rank-icon {
+  width: 130px;
+  height: 130px;
+  object-fit: contain; /* Respeta proporciones */
+  display: block;
+  margin-bottom: 10px;
+}
+
+.rank-info {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  text-align: center;
+  color: var(--font-color);
+  align-items: center;
+}
+
+.rank-name {
+  margin: 20px 0px 10px 0px;
+  font-family: "League Spartan", "Noto Sans", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.rank-scale {
+  margin: 10px 0px;
+  font-style: italic;
+}
+
+.rank-army {
+  margin: 10px 0px;
+}
+
+.rank-card:hover {
+  transform: scale(1.25);
+}

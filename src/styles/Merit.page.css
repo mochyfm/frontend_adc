@@ -1,0 +1,16 @@
+.merit-calc-section {
+  width: 100vw;
+  height: 100vh;
+}
+
+@media (min-width: 1500px) {
+    .merit-calc-section::before {
+        background-size: 35% auto;
+    }
+}
+
+@media (max-width: 1499px) {
+    .merit-calc-section::before {
+        background-size: 80% auto;
+    }
+}

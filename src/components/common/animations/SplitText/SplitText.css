@@ -1,0 +1,8 @@
+.split-text {
+  display: inline-block;
+  font-variant-ligatures: none;
+}
+.split-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
