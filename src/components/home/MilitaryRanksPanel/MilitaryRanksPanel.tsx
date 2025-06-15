@@ -131,6 +131,22 @@ export default function MilitaryRanksPanel() {
     };
   }, []);
 
+  // ✅ Bucle que actualiza ScrollTrigger continuamente (incluso con scroll automático)
+  useEffect(() => {
+    let animationFrame: number;
+
+    const update = () => {
+      ScrollTrigger.update();
+      animationFrame = requestAnimationFrame(update);
+    };
+
+    animationFrame = requestAnimationFrame(update);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
   return (
     <div className="military-panel" ref={panelRef}>
       <div className="background-blur" />

@@ -25,16 +25,16 @@ const Gallery: React.FC<GalleryProps> = ({
 }) => {
   const localGalleryRef = useRef<HTMLDivElement>(null);
 
-  // Nueva lógica: Contar imágenes cargadas
   const totalImgs = columns.reduce((acc, col) => acc + col.images.length, 0);
   const [imgsLoaded, setImgsLoaded] = useState(0);
 
-  // Solo lanzamos la animación cuando estén todas cargadas
+  // 🎯 Lanzamos animación cuando todas las imágenes estén cargadas
   useEffect(() => {
     if (imgsLoaded < totalImgs) return;
 
     const gallery = galleryRef?.current ?? localGalleryRef.current;
     if (!gallery) return;
+
     const cols = gallery.querySelectorAll<HTMLDivElement>(".gallery-col");
     gsap.from(cols, {
       y: 80,
@@ -48,13 +48,26 @@ const Gallery: React.FC<GalleryProps> = ({
         start: "top 90%",
       },
     });
-    // Solo cuando imgsLoaded cambie
   }, [imgsLoaded, totalImgs, galleryRef, columns]);
 
-  // Handler para cada imagen
+  // ✅ Loop ScrollTrigger.update() cuando todas las imágenes estén cargadas
+  useEffect(() => {
+    if (imgsLoaded < totalImgs) return;
+
+    let animationFrame: number;
+
+    const update = () => {
+      ScrollTrigger.update();
+      animationFrame = requestAnimationFrame(update);
+    };
+
+    animationFrame = requestAnimationFrame(update);
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [imgsLoaded, totalImgs]);
+
   const handleImgLoad = () => setImgsLoaded((c) => c + 1);
 
-  // Render de columnas: pasamos onLoad a cada <img>
   return (
     <div
       className="gallery-slider-viewport"
@@ -76,39 +89,15 @@ const Gallery: React.FC<GalleryProps> = ({
                 >
                   <div className="gallery-col-type-1-top">
                     <div className="gallery-col-type-1-left">
-                      <img
-                        src={col.images[0]}
-                        alt=""
-                        className="gallery-img"
-                        loading="lazy"
-                        onLoad={handleImgLoad}
-                      />
-                      <img
-                        src={col.images[1]}
-                        alt=""
-                        className="gallery-img"
-                        loading="lazy"
-                        onLoad={handleImgLoad}
-                      />
+                      <img src={col.images[0]} alt="" className="gallery-img" loading="lazy" onLoad={handleImgLoad} />
+                      <img src={col.images[1]} alt="" className="gallery-img" loading="lazy" onLoad={handleImgLoad} />
                     </div>
                     <div className="gallery-col-type-1-right">
-                      <img
-                        src={col.images[2]}
-                        alt=""
-                        className="gallery-img"
-                        loading="lazy"
-                        onLoad={handleImgLoad}
-                      />
+                      <img src={col.images[2]} alt="" className="gallery-img" loading="lazy" onLoad={handleImgLoad} />
                     </div>
                   </div>
                   <div className="gallery-col-type-1-bottom">
-                    <img
-                      src={col.images[3]}
-                      alt=""
-                      className="gallery-img"
-                      loading="lazy"
-                      onLoad={handleImgLoad}
-                    />
+                    <img src={col.images[3]} alt="" className="gallery-img" loading="lazy" onLoad={handleImgLoad} />
                   </div>
                 </div>
               );
@@ -120,46 +109,16 @@ const Gallery: React.FC<GalleryProps> = ({
                 >
                   <div className="gallery-col-type-2-top">
                     <div className="gallery-col-type-2-left">
-                      <img
-                        src={col.images[0]}
-                        alt=""
-                        className="gallery-img"
-                        loading="lazy"
-                        onLoad={handleImgLoad}
-                      />
+                      <img src={col.images[0]} alt="" className="gallery-img" loading="lazy" onLoad={handleImgLoad} />
                     </div>
                     <div className="gallery-col-type-2-right">
-                      <img
-                        src={col.images[1]}
-                        alt=""
-                        className="gallery-img"
-                        loading="lazy"
-                        onLoad={handleImgLoad}
-                      />
-                      <img
-                        src={col.images[2]}
-                        alt=""
-                        className="gallery-img"
-                        loading="lazy"
-                        onLoad={handleImgLoad}
-                      />
+                      <img src={col.images[1]} alt="" className="gallery-img" loading="lazy" onLoad={handleImgLoad} />
+                      <img src={col.images[2]} alt="" className="gallery-img" loading="lazy" onLoad={handleImgLoad} />
                     </div>
                   </div>
                   <div className="gallery-col-type-2-bottom">
-                    <img
-                      src={col.images[3]}
-                      alt=""
-                      className="gallery-img"
-                      loading="lazy"
-                      onLoad={handleImgLoad}
-                    />
-                    <img
-                      src={col.images[4]}
-                      alt=""
-                      className="gallery-img"
-                      loading="lazy"
-                      onLoad={handleImgLoad}
-                    />
+                    <img src={col.images[3]} alt="" className="gallery-img" loading="lazy" onLoad={handleImgLoad} />
+                    <img src={col.images[4]} alt="" className="gallery-img" loading="lazy" onLoad={handleImgLoad} />
                   </div>
                 </div>
               );
@@ -170,34 +129,16 @@ const Gallery: React.FC<GalleryProps> = ({
                   key={idx + col.type}
                 >
                   <div className="gallery-col-type-3-grid">
-                    <img
-                      src={col.images[0]}
-                      alt=""
-                      className="gallery-img"
-                      loading="lazy"
-                      onLoad={handleImgLoad}
-                    />
-                    <img
-                      src={col.images[1]}
-                      alt=""
-                      className="gallery-img"
-                      loading="lazy"
-                      onLoad={handleImgLoad}
-                    />
-                    <img
-                      src={col.images[2]}
-                      alt=""
-                      className="gallery-img"
-                      loading="lazy"
-                      onLoad={handleImgLoad}
-                    />
-                    <img
-                      src={col.images[3]}
-                      alt=""
-                      className="gallery-img"
-                      loading="lazy"
-                      onLoad={handleImgLoad}
-                    />
+                    {col.images.map((src, i) => (
+                      <img
+                        key={i}
+                        src={src}
+                        alt=""
+                        className="gallery-img"
+                        loading="lazy"
+                        onLoad={handleImgLoad}
+                      />
+                    ))}
                   </div>
                 </div>
               );

@@ -15,28 +15,34 @@ const CentralPanel: React.FC = () => {
   const cursorRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (firstLineRef.current && secondLineRef.current && cursorRef.current) {
-      gsap.fromTo(
-        firstLineRef.current!,
-        { text: "" },
-        {
-          duration: 1, // un poco más lento
-          text: "Te damos la bienvenida a ",
-          ease: "power1.out", // easing suave
-          onComplete: () => {
-            gsap.fromTo(
-              secondLineRef.current!,
-              { text: "" },
-              {
-                duration: 1,
-                text: "Academia de Combate.",
-                ease: "power1.out",
-              }
-            );
-          },
-        }
-      );
-    }
+    // Esperamos al próximo frame para asegurar que el DOM está listo
+    const animation = requestAnimationFrame(() => {
+      if (firstLineRef.current && secondLineRef.current && cursorRef.current) {
+        gsap.fromTo(
+          firstLineRef.current,
+          { text: "" },
+          {
+            duration: 1,
+            text: "Te damos la bienvenida a ",
+            ease: "power1.out",
+            onComplete: () => {
+              gsap.fromTo(
+                secondLineRef.current,
+                { text: "" },
+                {
+                  duration: 1,
+                  text: "Academia de Combate.",
+                  ease: "power1.out",
+                }
+              );
+            },
+          }
+        );
+      }
+    });
+
+    // Cleanup en caso de que el componente se desmonte rápido
+    return () => cancelAnimationFrame(animation);
   }, []);
 
   return (

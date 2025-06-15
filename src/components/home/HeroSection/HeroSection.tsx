@@ -15,7 +15,7 @@ function HeroSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Título: palabras aparecen desde abajo con stagger
+      // Título: palabras desde abajo con stagger
       gsap.from(wordsRef.current, {
         y: 50,
         opacity: 0,
@@ -55,6 +55,23 @@ function HeroSection() {
     }, sectionRef);
 
     return () => ctx.revert();
+  }, []);
+
+  // 🔄 Fuerza actualización de ScrollTrigger en interacciones no estándar
+  useEffect(() => {
+    const update = () => ScrollTrigger.update();
+
+    window.addEventListener("keydown", update);
+    window.addEventListener("mousedown", update);
+    window.addEventListener("mouseup", update);
+    window.addEventListener("wheel", update);
+
+    return () => {
+      window.removeEventListener("keydown", update);
+      window.removeEventListener("mousedown", update);
+      window.removeEventListener("mouseup", update);
+      window.removeEventListener("wheel", update);
+    };
   }, []);
 
   const splitTitle = "Calcula tu Baremo".split(" ");

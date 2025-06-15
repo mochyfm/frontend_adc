@@ -100,6 +100,22 @@ function GalleryPresentation() {
     }
   }, []);
 
+  // ✅ Bucle que asegura actualización de ScrollTrigger con cualquier tipo de scroll
+  useEffect(() => {
+    let animationFrame: number;
+
+    const update = () => {
+      ScrollTrigger.update();
+      animationFrame = requestAnimationFrame(update);
+    };
+
+    animationFrame = requestAnimationFrame(update);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
   return (
     <div className="presentation-of-gallery">
       <h2 ref={titleRef}>

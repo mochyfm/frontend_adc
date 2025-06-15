@@ -1,47 +1,26 @@
 "use client";
 
-import { contentData } from "../../../data/InformationContent"; // ajusta la ruta según tu estructura
-
+import { contentData } from "../../../data/InformationContent";
 import React, { useEffect, useRef, useState } from "react";
 import { FaMedal, FaDumbbell, FaClock } from "react-icons/fa";
 import "./InformationPanel.css";
 import InformationCard from "@/components/home/InformationPanelCard";
-
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/**
- * Tipos válidos para las keys de botones y contenido
- */
 type ContentKey = "Medal" | "Dumbell" | "Clock";
 
-/**
- * Mapeo de claves a componentes de iconos de React
- */
 const iconComponents: Record<ContentKey, React.ComponentType> = {
   Medal: FaMedal,
   Dumbell: FaDumbbell,
   Clock: FaClock,
 };
 
-/**
- * Datos de contenido dinámico para cada botón
- */
-
-/**
- * Componente para mostrar el contenido dinámico con animaciones GSAP
- * @param activeKey Clave que indica el contenido activo a mostrar
- */
 function AnimatedContent({ activeKey }: { activeKey: ContentKey }) {
-  // Ref al contenedor del contenido dinámico para animar
   const contentRef = useRef<HTMLDivElement | null>(null);
 
-  /**
-   * Efecto para animar la aparición del contenido
-   * Se ejecuta cada vez que cambia activeKey
-   */
   useEffect(() => {
     if (!contentRef.current) return;
 
@@ -86,12 +65,10 @@ function AnimatedContent({ activeKey }: { activeKey: ContentKey }) {
     }, contentRef);
 
     return () => {
-      if (ctx.scrollTrigger) ctx.scrollTrigger.kill();
       ctx.revert();
     };
   }, [activeKey]);
 
-  // Extraemos los datos del contenido para la clave activa
   const { title, description, cards, imageSrc } = contentData[activeKey];
 
   return (
@@ -125,25 +102,14 @@ function AnimatedContent({ activeKey }: { activeKey: ContentKey }) {
   );
 }
 
-/**
- * Componente principal que contiene los botones y el contenido dinámico
- */
 export default function InformationPanel() {
-  // Estado para el botón activo (contenido activo)
   const [activeKey, setActiveKey] = useState<ContentKey>("Medal");
-
-  // Ref al div principal para fondo difuminado y animaciones estáticas
   const panelRef = useRef<HTMLDivElement | null>(null);
 
-  /**
-   * Efecto para animar el fondo, botones y animaciones que no cambian al cambiar contenido
-   * Se ejecuta solo una vez al montar el componente
-   */
   useEffect(() => {
     const panel = panelRef.current;
     if (!panel) return;
 
-    // Selección de elementos estáticos
     const buttons = panel.querySelectorAll<HTMLAnchorElement>(
       ".information-button-panel a"
     );
@@ -156,7 +122,6 @@ export default function InformationPanel() {
       panel.prepend(backgroundBlur);
     }
 
-    // Timeline GSAP para animar botones y fondo
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: panel,
@@ -177,17 +142,30 @@ export default function InformationPanel() {
     });
 
     return () => {
-      if (tl.scrollTrigger) tl.scrollTrigger.kill();
       tl.kill();
+    };
+  }, []);
+
+  // ✅ Loop constante que fuerza ScrollTrigger.update()
+  useEffect(() => {
+    let animationFrame: number;
+
+    const update = () => {
+      ScrollTrigger.update();
+      animationFrame = requestAnimationFrame(update);
+    };
+
+    animationFrame = requestAnimationFrame(update);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
     };
   }, []);
 
   return (
     <div className="information-panel" ref={panelRef}>
-      {/* Fondo difuminado animado */}
       <div className="background-blur" />
 
-      {/* Panel de botones */}
       <div className="information-button-panel">
         {(Object.keys(iconComponents) as ContentKey[]).map((key) => {
           const Icon = iconComponents[key];
@@ -210,7 +188,6 @@ export default function InformationPanel() {
         })}
       </div>
 
-      {/* Contenido dinámico con animaciones propias */}
       <AnimatedContent activeKey={activeKey} />
     </div>
   );

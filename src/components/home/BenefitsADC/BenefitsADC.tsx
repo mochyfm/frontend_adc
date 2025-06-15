@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 interface CardData {
   title: string;
   content?: string;
-  contentFontSize?: string; // <-- añadimos esto
+  contentFontSize?: string;
 }
 
 const cards: CardData[] = [
@@ -19,20 +19,20 @@ const cards: CardData[] = [
   { title: "+ 4.500", content: "Test psicotécnicos disponibles." },
   {
     title: "+ 80",
-    content: "Clases disponibles de orientación militar con militares en Activo.",
+    content:
+      "Clases disponibles de orientación militar con militares en Activo.",
   },
   {
     title: "100 %",
     content: `<span class="benefits-important">Online:</span> Aprende y participa a tu ritmo.`,
   },
-  { title: "5", content: "Clases a la semana.", contentFontSize: "2rem" }, // <-- aquí lo aplicas
+  { title: "5", content: "Clases a la semana.", contentFontSize: "2rem" },
   { title: "24/7", content: "Contacto directo por Whatsapp/Telegram." },
   {
     title: "+ 30",
     content: `Orientadores para resolver tus dudas. De una <span class="benefits-important">Gran variedad</span> de destinos.`,
   },
 ];
-
 
 function isMobile() {
   return window.matchMedia("(max-width: 700px)").matches;
@@ -80,7 +80,6 @@ function BenefitsADC() {
       }
     );
 
-    // Solo UNA animación de cartas según dispositivo
     const total = cardRefs.current.length;
 
     if (isMobile()) {
@@ -124,6 +123,20 @@ function BenefitsADC() {
         );
       }
     }
+  }, []);
+
+  // ✅ Actualiza ScrollTrigger continuamente incluso con scroll automático
+  useEffect(() => {
+    let animationFrame: number;
+
+    const update = () => {
+      ScrollTrigger.update();
+      animationFrame = requestAnimationFrame(update);
+    };
+
+    animationFrame = requestAnimationFrame(update);
+
+    return () => cancelAnimationFrame(animationFrame);
   }, []);
 
   cardRefs.current = [];

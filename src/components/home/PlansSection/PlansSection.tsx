@@ -46,6 +46,22 @@ export default function PlansSection() {
     };
   }, []);
 
+  // ✅ Bucle para mantener ScrollTrigger actualizado con cualquier tipo de scroll
+  useEffect(() => {
+    let animationFrame: number;
+
+    const update = () => {
+      ScrollTrigger.update();
+      animationFrame = requestAnimationFrame(update);
+    };
+
+    animationFrame = requestAnimationFrame(update);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
   return (
     <section className="plans-section">
       <h2 className="plans-header" ref={titleRef}>
