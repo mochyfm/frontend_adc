@@ -1,0 +1,66 @@
+.left-panel-bar-body {
+  color: var(--color-user-panel);
+  width: 500px;
+  max-width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 0.5s ease;
+}
+
+.left-panel-bar-toggle-button,
+.left-panel-bar-toggle-button-mobile {
+  background-color: var(--user-panel-leftbar-background);
+  color: var(--color-user-panel);
+  border: none;
+  padding: 10px;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s;
+  position: absolute;
+}
+
+.left-panel-bar-toggle-button {
+  left: 0;
+  z-index: 10;
+}
+
+.left-panel-bar {
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  background-color: var(--user-panel-leftbar-background) !important;
+  scrollbar-color: var(--user-panel-leftbar-scroll-color) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--user-panel-leftbar-scroll-color) !important;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--user-panel-leftbar-scroll-color) !important;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: var(--user-panel-leftbar-scroll-color) !important;
+}
+
+@media (max-width: 500px) {
+  .left-panel-bar-body {
+    width: 100%;
+  }
+}

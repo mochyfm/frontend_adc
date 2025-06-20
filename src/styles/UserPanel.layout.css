@@ -1,0 +1,36 @@
+.user-panel-section {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  transition: all 0.3s ease;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.panel-open .left-panel-bar-body {
+  width: 20vw;
+  min-width: 200px;
+  max-width: 300px;
+  flex-shrink: 0;
+}
+
+.panel-open .user-panel {
+  width: calc(100% - 20vw);
+  transition: width 0.3s ease;
+}
+
+.panel-closed .user-panel {
+  width: 100%;
+}
+
+@media (max-width: 999px) {
+  .user-panel {
+    width: 100% !important;
+  }
+
+  .left-panel-bar-body {
+    position: absolute !important;
+    z-index: 100;
+  }
+}

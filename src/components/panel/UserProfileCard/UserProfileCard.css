@@ -1,0 +1,31 @@
+.user-profile-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 8.5rem;
+  background-color: var(--user-panel-profile-background);
+  width: 90%;
+  margin: 25px 0px;
+}
+
+.user-profile-content {
+  width: 60%;
+}
+
+.user-profile-body svg:last-of-type {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+.user-profile-name {
+  font-size: 1.12rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+}
+
+.user-profile-role {
+  font-size: 0.9rem;
+  font-weight: lighter;
+}

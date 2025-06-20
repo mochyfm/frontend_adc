@@ -1,6 +1,6 @@
 .benefit-card-body {
   align-items: center;
-  border: 2px solid var(--color-complementary);
+  border: 3px solid var(--color-complementary);
   border-radius: 15px;
   color: var(--font-color);
   display: flex;

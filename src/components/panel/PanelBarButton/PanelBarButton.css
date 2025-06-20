@@ -1,0 +1,67 @@
+.panel-bar-button-body {
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  font-weight: 900;
+  font-family: "League Spartan", "Note Sans", sans-serif;
+  justify-content: center;
+  margin: 15px 0px;
+  position: relative;
+  text-align: center;
+  width: 90%;
+}
+
+.image-transparent-layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.image-background {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 40px 10px;
+}
+
+.image-block-text {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  transition: transform 0.4s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.panel-bar-button-body:hover {
+  cursor: pointer;
+}
+
+.panel-bar-button-body:hover .image-transparent-layer {
+  opacity: 0;
+}
+
+.panel-bar-button-body:hover .image-block-text {
+  transform: scale(1.1);
+}
+
+.text-ET {
+  color: var(--color-et);
+}
+
+.text-Armada {
+  color: var(--color-armada);
+}
+
+.text-EA {
+  color: var(--color-ea);
+}

@@ -17,17 +17,18 @@ import { Metadata } from "next";
 const year = new Date().getFullYear();
 
 /**
- * Metadata de la página de inicio:
- * - Title: aparece en la pestaña del navegador y mejora el SEO.
- * - Description: texto breve para motores de búsqueda.
- * - OpenGraph: etiquetas para compartir en redes (Facebook, LinkedIn…).
- * - Twitter: configuración para Twitter Cards.
+ * Metadatos para la Página de Inicio:
+ * - title: título principal que aparece en la pestaña del navegador.
+ * - description: resumen optimizado para motores de búsqueda.
+ * - openGraph: define la vista previa al compartir el sitio en redes sociales.
+ * - twitter: mejora la visualización del sitio en Twitter (Twitter Cards).
+ * - icons: establece el favicon visible en la pestaña del navegador.
  */
 
-export const metadata : Metadata = {
+export const metadata: Metadata = {
   title: "Inicio | Academia de Combate",
-  description: `Prepárate para las oposiciones del Ejército de Tierra con Academia de Combate. Descubre nuestras características, 
-  planes de entrenamiento y ventajas para superar las pruebas psicotécnicas, físicas y poder elegir un destino acorde a tus necesidades.`,
+  description:
+    "Prepárate para las oposiciones del Ejército de Tierra con Academia de Combate. Descubre nuestras características, planes de entrenamiento y ventajas para superar las pruebas psicotécnicas, físicas y poder elegir un destino acorde a tus necesidades.",
   openGraph: {
     title: "Inicio | Academia de Combate",
     description: "Prepárate para las oposiciones del ejército español",
@@ -35,7 +36,7 @@ export const metadata : Metadata = {
     siteName: "Academia de Combate",
     images: [
       {
-        url: SITE_URL + "/favicon2.png", // /public/ejemplo.jpg
+        url: SITE_URL + "/common/favicon3.png",
         width: 1200,
         height: 630,
         alt: "Academia de Combate - Entrena para oposiciones",
@@ -47,10 +48,12 @@ export const metadata : Metadata = {
   twitter: {
     title: "Inicio | Academia de Combate",
     description:
-      `Entrena para las oposiciones del Ejército de Tierra con Academia de Combate.
-      Conoce nuestras ventajas y planes de preparación.`,
+      "Entrena para las oposiciones del Ejército de Tierra con Academia de Combate. Conoce nuestras ventajas y planes de preparación.",
     card: "summary_large_image",
-    images: [SITE_URL + "/favicon2.png"], // /public/ejemplo.jpg
+    images: [SITE_URL + "/common/favicon3.png"],
+  },
+  icons: {
+    icon: "/common/favicon3.png",
   },
 };
 
@@ -82,7 +85,7 @@ export default function Home() {
       <section id="planes" className="section gradient1">
         <PlansSection /> {/* Use client */}
       </section>
-      <Footer year={year}/>
+      <Footer year={year} />
     </>
   );
-};
+}

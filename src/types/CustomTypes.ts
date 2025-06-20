@@ -74,3 +74,5 @@ export interface PlanCardProps extends PlanCard {}
 
 export type AttributeType = "Positive" | "Negative";
 export type PlanCardColor = "Complete" | "Pro";
+
+export type ArmyType = "ET" | "Armada" | "EA"

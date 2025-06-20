@@ -1,0 +1,34 @@
+.group-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.group-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.group-panel-header .line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #ccc;
+  width: 90%;
+  position: absolute;
+}
+
+.group-panel h2 {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 20px 0px;
+  padding: 0 20px;
+  background-color: var(--user-panel-leftbar-background);
+  z-index: 1;
+}

@@ -11,11 +11,18 @@
   --color-complementary-hover: #b65e00;
 
   --footer-border-color: #FFF;
+  --color-user-panel: #FFF;
 
   /* Fondos */
   --color-background: #1c1c1c;
   --color-background-linear-start: #131313;
   --color-background-linear-end: #000000;
+
+  --user-panel-leftbar-background: #111111;
+  --user-panel-leftbar-scroll-color: #1c1c1c;
+
+  --user-panel-profile-background: #080808;
+  --user-panel-profile-image-background: #ffffff;
 
   --color-background-transparent: rgba(30, 30, 30, 0.5);
 
@@ -47,6 +54,10 @@
   /* Texto e íconos */
   --icon-color: #ffffff;
   --font-color: #ffffff;
+
+  --color-et: #BFC787;
+  --color-armada: #8DA4EA;
+  --color-ea: #FFA093;
 }
 
 html,
