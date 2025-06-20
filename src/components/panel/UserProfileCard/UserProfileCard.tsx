@@ -10,6 +10,7 @@ function UserProfileCard() {
 
   return (
     <div className="user-profile-body">
+      <FaUser/>
       <div className="user-profile-content">
         <div className="user-profile-name">Moisés Fernández Muiña</div>
         <div className="user-profile-role">Administrador</div>

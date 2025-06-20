@@ -9,6 +9,8 @@ const Page = () => {
   const userPanelRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(true);
 
+  const panelWidth = 500;
+
   const animatePanels = (open: boolean, isMobile: boolean) => {
     if (!leftPanelRef.current || !userPanelRef.current) return;
 
@@ -42,7 +44,7 @@ const Page = () => {
     } else {
       if (open) {
         gsap.to(panel, {
-          width: 0,
+          x: -panelWidth,
           duration: 0.3,
           ease: "power3.out",
           onComplete: () => {
@@ -58,21 +60,22 @@ const Page = () => {
         panel.style.display = "block";
         gsap.fromTo(
           panel,
-          { width: 0 },
+          { x: -panelWidth },
           {
-            width: 500,
+            x: 0,
             duration: 0.3,
             ease: "power3.out",
           }
         );
         gsap.to(content, {
-          marginLeft: 500,
+          marginLeft: panelWidth,
           duration: 0.3,
           ease: "power3.out",
         });
       }
     }
   };
+
   const togglePanel = () => {
     const isMobile = window.innerWidth <= 999;
     animatePanels(isOpen, isMobile);
@@ -92,24 +95,18 @@ const Page = () => {
       gsap.set(content, { marginLeft: 0 });
     } else {
       gsap.set(panel, {
-        x: 0,
-        width: isOpen ? 500 : 0,
+        x: isOpen ? 0 : -panelWidth,
       });
 
       gsap.set(content, {
-        marginLeft: isOpen ? 500 : 0,
+        marginLeft: isOpen ? panelWidth : 0,
       });
     }
   }, []);
 
   return (
     <>
-      <div
-        className="left-panel-bar-body"
-        style={{
-          width: isOpen ? 500 : 0,
-        }}
-      >
+      <div className="left-panel-bar-body">
         <LeftPanelBar
           togglePanel={togglePanel}
           isOpen={isOpen}
@@ -118,10 +115,11 @@ const Page = () => {
       </div>
 
       <div
-        ref={userPanelRef}
         className="user-panel-body"
+        ref={userPanelRef}
         style={{
-          marginLeft: isOpen ? 500 : 0,
+          marginLeft: isOpen ? panelWidth : 0,
+          transition: "margin-left 0.3s ease",
         }}
       >
         <UserPanel parentRef={userPanelRef} />

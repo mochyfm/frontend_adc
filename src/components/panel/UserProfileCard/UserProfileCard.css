@@ -8,6 +8,14 @@
   margin: 25px 0px;
 }
 
+.user-profile-body svg:first-of-type {
+  border-radius: 10px;
+  font-size: 50px;
+  margin-left: 20px;
+  box-sizing: content-box;
+  margin-right: 20px;
+}
+
 .user-profile-content {
   width: 60%;
 }
