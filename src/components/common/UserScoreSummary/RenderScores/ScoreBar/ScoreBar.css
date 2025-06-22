@@ -1,0 +1,32 @@
+.score-bar-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 0 20px;
+  max-width: 30px;
+  min-width: 20px;
+  height: 100%;
+  background-color: #c1c3a6;
+  border-radius: 4px;
+  padding: 4px 2px;
+}
+
+.score-bar-column {
+  width: 100%;
+  transition: height 0.3s ease;
+  border-radius: 2px 2px 0 0;
+  width: 50px;
+}
+
+.score-bar-label {
+  user-select: none;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-top: 4px;
+  color: #333;
+}
+
+.custom-sim {
+  color: var(--custom-sim-color);
+}

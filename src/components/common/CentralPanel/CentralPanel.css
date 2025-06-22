@@ -8,7 +8,7 @@
 
 .central-text {
   font-size: 64px;
-  font-family: "Quantico", sans-serif;
+  font-family: var(--type-1-ff);
   font-weight: bold;
   text-transform: uppercase;
   color: var(--font-color);

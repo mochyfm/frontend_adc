@@ -32,7 +32,7 @@
 
 .rank-name {
   margin: 20px 0px 10px 0px;
-  font-family: "League Spartan", "Noto Sans", sans-serif;
+  font-family: var(--type-3-ff);
   text-transform: uppercase;
   font-weight: 900;
 }

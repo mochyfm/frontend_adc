@@ -15,7 +15,7 @@
   text-align: center;
   font-size: 45px;
   color: var(--font-color);
-  font-family: "Quantico", "Noto Sans", sans-serif;
+  font-family: var(--type-3-ff);
   text-transform: uppercase;
   margin: 25px;
 }
@@ -71,7 +71,7 @@
 
 .merit-calculator-footer {
   color: var(--font-color);
-  font-family: "League Spartan", "Noto Sans", sans-serif;
+  font-family: var(--type-2-ff);
   font-weight: lighter;
   font-size: 18px;
   display: flex;

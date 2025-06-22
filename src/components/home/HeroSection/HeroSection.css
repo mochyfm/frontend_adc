@@ -9,14 +9,14 @@
 }
 
 .hero-header {
-  font-family: "Quantico", "Noto Sans", sans-serif;
+  font-family: var(--type-3-ff);
   text-transform: uppercase;
   font-size: 96px;
   display: flex;
 }
 
 .hero-content {
-  font-family: "League Spartan", "Noto Sans", sans-serif;
+  font-family: var(--type-2-ff);
   font-size: 32px;
   text-align: center;
 }

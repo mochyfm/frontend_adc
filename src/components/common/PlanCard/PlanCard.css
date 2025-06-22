@@ -37,7 +37,7 @@
   margin-bottom: 50px;
   text-align: center;
   text-transform: uppercase;
-  font-family: "Quantico", "Noto Sans", sans-serif;
+  font-family: var(--type-3-ff);
   font-weight: 900;
 }
 
@@ -59,7 +59,7 @@
 
 .plan-card-attribute-text {
   font-weight: 700;
-  font-family: "League Spartan", "Noto Sans", sans-serif;
+  font-family: var(--type-2-ff);
   font-size: 1.2rem;
 }
 

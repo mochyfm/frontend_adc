@@ -1,0 +1,75 @@
+.exams-summary-block {
+  background-color: var(--color-secondary);
+  grid-column: span 3;
+  border-radius: 10px;
+  padding: 15px;
+  width: 100%;
+  height: 900px;
+  overflow: hidden;
+}
+
+.exams-complete-fill-block {
+  grid-column: span 3;
+}
+
+.exams-summary-buttons-block {
+  height: 45%;
+}
+
+.exams-summary-row {
+  display: grid;
+  gap: 15px;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 15px 0px;
+  height: 50%;
+}
+
+.exams-summary-button,
+.exams-important-summary-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-tertiary);
+  border-radius: 10px;
+  color: var(--font-color);
+  width: 100%;
+  padding: 25px;
+  text-align: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.exams-summary-button:hover,
+.exams-important-summary-button:hover {
+  background-color: var(--bg-default);
+}
+
+.exams-summary-button:hover {
+  color: var(--extra-color-primary-alt);
+}
+
+.exams-summary-button {
+  font-size: 2.5rem;
+  font-family: var(--type-1-ff);
+  text-transform: uppercase;
+}
+
+.exams-important-summary-button {
+  background-color: var(--color-complementary);
+  color: var(--extra-color-primary-alt);
+  grid-column: span 3;
+  font-family: var(--type-1-ff);
+  text-transform: uppercase;
+  font-size: 2.75rem;
+  flex-direction: column;
+}
+
+.exams-important-summary-name {
+  font-weight: 900;
+}
+
+.exams-important-summary-data {
+  font-size: 1.5rem;
+  font-family: var(--type-2-ff);
+  font-weight: 300;
+}

@@ -1,7 +1,7 @@
 .presentation-of-gallery {
   width: 100%;
   min-height: 100vh;
-  font-family: "Quantico";
+  font-family: var(--important-text-ff);
   color: var(--font-color);
   display: flex;
   flex-direction: column;

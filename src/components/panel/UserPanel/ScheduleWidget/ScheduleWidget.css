@@ -1,0 +1,39 @@
+.schedule-widget-date {
+  background-color: var(--extra-color-secondary);
+  border-radius: 10px;
+  margin: 20px;
+  padding: 30px;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.schedule-widget-event-list {
+  border-radius: 10px;
+  background-color: var(--extra-color-secondary);
+  height: 80%;
+  margin: 20px;
+  padding: 5px;
+  height: 625px;
+  overflow-y: scroll;
+}
+
+.schedule-open-full-calendar {
+  background-color: var(--extra-color-secondary);
+  border-radius: 10px;
+  align-self: flex-end;
+  margin-right: 20px;
+  padding: 10px 30px;
+  font-size: 1.25rem;
+  font-weight: lighter;
+  transition: font-weight 0.2s ease, background 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+}
+
+.schedule-open-full-calendar:hover {
+  font-weight: 300;
+  background-color: var(--color-primary);
+  color: var(--extra-color-secondary);
+}

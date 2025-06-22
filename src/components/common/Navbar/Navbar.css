@@ -3,7 +3,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  font-family: "Quantico", "League Spartan", "Noto Sans", sans-serif;
+  font-family: var(--type-2-ff);
   margin: 25px 0;
   align-self: flex-start;
   z-index: 20;

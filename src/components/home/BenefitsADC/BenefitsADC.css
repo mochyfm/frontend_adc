@@ -10,7 +10,7 @@
 .benefits-title {
   font-size: 4rem;
   color: var(--font-color);
-  font-family: "Quantico", "Noto sans", sans-serif;
+  font-family: var(--type-3-ff);
   text-transform: uppercase;
   margin: 1.5rem 0;
   text-align: center;

@@ -1,9 +1,9 @@
 "use client";
 import { FaBars } from "react-icons/fa";
 import "./LeftPanelBar.css";
-import UserProfileCard from "../UserProfileCard";
-import PanelBarButton from "../PanelBarButton";
-import GroupPanel from "../GroupPanel";
+import UserProfileCard from "./UserProfileCard";
+import PanelBarButton from "./PanelBarButton";
+import GroupPanel from "./GroupPanel";
 
 interface LeftPanelProps {
   togglePanel: () => void;

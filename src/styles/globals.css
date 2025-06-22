@@ -2,51 +2,56 @@
 
 :root {
   /* Colores principales */
-  --color-primary: #484e19;
-  --color-secondary: #65762a;
-  --color-tertiary: #8a9a4d;
-  --color-quatertiary: #C2C5A9;
+  --color-primary: #494b32;
+  --color-secondary: #26271d;
+  --color-tertiary: #40422c;
+  --color-quatertiary: #373829;
+
+  --extra-color-primary: #fff;
+  --extra-color-primary-alt: #000;
+  --extra-color-secondary: #c2c5a9;
 
   /* Color complementario */
   --color-complementary: #ff8800;
   --color-complementary-hover: #b65e00;
 
-  --footer-border-color: #FFF;
-  --color-user-panel: #FFF;
+  --footer-border-color: var(--extra-color-primary);
+  --color-user-panel: var(--extra-color-primary);
 
   /* Fondos */
-  --color-background: #1c1c1c;
-  --color-background-linear-start: #131313;
-  --color-background-linear-end: #000000;
+  --color-background: var(--color-tertiary);
+  --color-background-linear-start: var(--color-quatertiary);
+  --color-background-linear-end: var(--color-secondary);
 
-  --user-panel-leftbar-background: #111111;
-  --user-panel-leftbar-scroll-color: #1c1c1c;
+  --user-panel-leftbar-background: var(--color-secondary);
+  --user-panel-leftbar-scroll-color: var(--color-tertiary);
 
-  --user-panel-profile-background: #080808;
-  --user-panel-profile-image-background: #ffffff;
+  --user-panel-profile-background: #13130e;
+  --user-panel-profile-image-background: var(--extra-color-primary);
 
-  --color-background-transparent: rgba(30, 30, 30, 0.5);
+  /* --color-background-transparent: rgba(30, 30, 30, 0.5); */
+  --color-background-transparent: #40422c7a;
 
   /* Card Plans colors */
-  
-  --complete-plan-card-color: #00FF6A;
+
+  --complete-plan-card-color: #00ff6a;
   --pro-plan-card-color: #6600ff;
 
   /* Botones */
-  --button-bg-color: #363636;
-  --button-icon-color: #6a6a6a;
+  --button-bg-color: #26271d;
+  --button-icon-color: var(--extra-color-primary);
 
-  --button-bg-hover: #202020;
-  --button-icon-hover: #a7a7a7;
+  --button-bg-hover: var(--color-primary);
+  --button-icon-hover: var(--color-quatertiary);
 
-  --button-bg-active: #ffffff;
-  --button-icon-active: #363636;
+  --button-bg-active: var(--extra-color-primary);
+  --button-icon-active: var(--color-quatertiary);
 
   /* Inputs */
 
-  --input-font-color: #131313;
+  --input-font-color: #26271d;
 
-  --focus-input-color: #000;
+  --focus-input-color: #1c1c1c;
   --enabled-input-bg-color: #dee1e2;
   --disabled-input-bg-color: #363636;
 
@@ -56,9 +61,78 @@
   --icon-color: #ffffff;
   --font-color: #ffffff;
 
-  --color-et: #BFC787;
-  --color-armada: #8DA4EA;
-  --color-ea: #FFA093;
+  --color-et: #bfc787;
+  --color-armada: #8da4ea;
+  --color-imt: #2649b1;
+  --color-ea: #ffa093;
+
+  /* Widgets */
+
+  --background-color-widget: #26271d;
+  --custom-sim-color: #757575;
+
+  /* Calendar Schedule Card - Tarjetas */
+
+  --bg-clase-obligatoria: #860000;
+  --color-clase-obligatoria: var(--extra-color-primary);
+
+  --bg-clase-repaso: #fff;
+  --color-clase-repaso: var(--extra-color-primary-alt);
+
+  --bg-ori-et: var(--color-et);
+  --color-ori-et: var(--extra-color-primary-alt);
+
+  --bg-ori-ea: var(--color-ea);
+  --color-ori-ea: var(--extra-color-primary-alt);
+
+  --bg-ori-armada: var(--color-armada);
+  --color-ori-armada: var(--extra-color-primary);
+
+  --bg-ori-imt: var(--color-imt);
+  --color-ori-imt: var(--extra-color-primary);
+
+  --bg-debate: #025a26;
+  --color-debate: var(--extra-color-primary);
+
+  --bg-intensivo: #eddb0d;
+  --color-intensivo: var(--extra-color-primary);
+
+  --bg-entrevista: #8111dd;
+  --color-entrevista: var(--extra-color-primary-alt);
+
+  --bg-repaso-simulacro: #00ff6a;
+  --color-repaso-simulacro: var(--extra-color-primary-alt);
+
+  --bg-default: var(--extra-color-primary);
+  --color-default: var(--extra-color-primary);
+
+  /* Font Family */
+
+  --important-text-ff: "Quantico";
+  --decorative-text-ff: "League Spartan";
+  --normal-text-ff: "Noto Sans";
+
+  --type-1-ff: var(--important-text-ff), sans-serif;
+  --type-2-ff: var(--decorative-text-ff), var(--normal-text-ff), sans-serif;
+  --type-3-ff: var(--important-text-ff), var(--normal-text-ff), sans-serif;
+
+  /* Color aptitudes */
+
+  --verbal-aptitude-color: #4e59d4;
+  --espacial-aptitude-color: #cfc445;
+  --percepcion-aptitude-color: #91d26e;
+  --numerico-aptitude-color: #b44435;
+  --mecanico-aptitude-color: #696969;
+  --memoria-aptitude-color: #9b6ed2;
+  --abstracto-aptitude-color: #dea555;
+
+  /* Color resumen simulacros */
+
+  --good-sim-score: #91D26E;
+  --ok-sim-score: #A1FF58;
+  --medium-sim-score: #FFAD5C;
+  --bad-sim-score: #FF3F3F;
+
 }
 
 html,
@@ -88,6 +162,20 @@ body {
 
 strong {
   color: var(--color-complementary) !important;
+}
+
+button.disabled {
+  cursor: not-allowed;
+  color: var(--font-color);
+  background-color: var(--disabled-input-bg-color);
+  transition: none;
+}
+
+button.disabled:hover {
+  cursor: not-allowed;
+  color: var(--font-color);
+  background-color: var(--disabled-input-bg-color);
+  transition: none;
 }
 
 /* Scrollbar para Chrome, Edge, Safari */

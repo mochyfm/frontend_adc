@@ -2,6 +2,7 @@
 import gsap from "gsap";
 import LeftPanelBar from "@/components/panel/LeftPanelBar";
 import UserPanel from "@/components/panel/UserPanel";
+import '@/styles/UserPanel.page.css'
 import React, { useEffect, useRef, useState } from "react";
 
 const Page = () => {
@@ -113,7 +114,6 @@ const Page = () => {
           parentRef={leftPanelRef}
         />
       </div>
-
       <div
         className="user-panel-body"
         ref={userPanelRef}

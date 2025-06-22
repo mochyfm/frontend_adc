@@ -5,7 +5,7 @@
   background-repeat: no-repeat;
   display: flex;
   font-weight: 900;
-  font-family: "League Spartan", "Note Sans", sans-serif;
+  font-family: var(--type-3-ff);
   justify-content: center;
   margin: 15px 0px;
   position: relative;

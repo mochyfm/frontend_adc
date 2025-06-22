@@ -1,0 +1,72 @@
+.aptitude-block {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  background-color: var(--color-secondary);
+  border-radius: 10px;
+  padding: 40px;
+  justify-content: space-around;
+  height: 900px;
+}
+
+.aptitude-block h2 {
+  text-align: center;
+  font-size: 3rem;
+  font-family: var(--type-1-ff);
+  text-transform: uppercase;
+  font-weight: 900;
+  color: var(--font-color);
+}
+
+.aptitude-buttons-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.aptitude-buttons-panel button {
+  font-family: var(--type-2-ff);
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--font-color);
+  border-radius: 10px;
+  padding: 10px 30px;
+  background-color: var(--bg-default);
+  margin: 15px 0px;
+  font-size: 2rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.aptitude-buttons-panel button:hover {
+  background-color: var(--extra-color-primary);
+  color: var(--extra-color-primary-alt);
+}
+
+button.verbal-aptitude {
+  background-color: var(--verbal-aptitude-color);
+}
+
+button.espacial-aptitude {
+  background-color: var(--espacial-aptitude-color);
+}
+
+button.percepcion-aptitude {
+  background-color: var(--percepcion-aptitude-color);
+}
+
+button.numerico-aptitude {
+  background-color: var(--numerico-aptitude-color);
+}
+
+button.mecanico-aptitude {
+  background-color: var(--mecanico-aptitude-color);
+}
+
+button.memoria-aptitude {
+  background-color: var(--memoria-aptitude-color);
+}
+
+button.abstracto-aptitude {
+  background-color: var(--abstracto-aptitude-color);
+}

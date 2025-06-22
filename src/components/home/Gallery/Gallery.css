@@ -40,7 +40,7 @@
 }
 
 .gallery-overlay-content .gallery-header {
-  font-family: "League Spartan", "Noto Sans", sans-serif;
+  font-family: var(--type-2-ff);
   font-size: 4rem;
   text-transform: uppercase;
 }

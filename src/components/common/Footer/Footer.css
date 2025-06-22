@@ -6,7 +6,7 @@
   border-top: 2px solid var(--footer-border-color);
   color: var(--font-color);
   justify-content: space-around;
-  font-family: "League Spartan", "Noto Sans", sans-serif;
+  font-family: var(--type-2-ff);
   padding: 2rem;
 }
 

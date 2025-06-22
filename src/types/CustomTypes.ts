@@ -75,4 +75,60 @@ export interface PlanCardProps extends PlanCard {}
 export type AttributeType = "Positive" | "Negative";
 export type PlanCardColor = "Complete" | "Pro";
 
-export type ArmyType = "ET" | "Armada" | "EA"
+export type ArmyType = "ET" | "Armada" | "EA";
+
+export type EventType =
+  | "Clase Obligatoria"
+  | MilitaryClassType
+  | "Debate"
+  | "Entrevista"
+  | "Físicas"
+  | AptitudeClassType;
+
+export type MilitaryClassType =
+  | "Orientación ET"
+  | "Orientación EA"
+  | "Orientación Armada"
+  | "Orientación IMT";
+
+export type AptitudeClassType =
+  | "Clase de psisoctécnicos"
+  | "Repaso psicotécnicos"
+  | "Simulacro"
+  | "Intensivo";
+
+export type HourAndMin = `${number}:${number}`;
+
+export type Aptitude =
+  | "Verbal"
+  | "Espacial"
+  | "Percepción"
+  | "Numérico"
+  | "Mecánico"
+  | "Memoria"
+  | "Abstracto";
+
+export interface CalendarEvent {
+  title: string;
+  date: Date;
+  startingHour: HourAndMin;
+  endingHour: HourAndMin;
+  teacher: string;
+  typeOfEvent: EventType;
+}
+
+export interface SimulacroScore {
+  uuid: string;
+  simulacro: string;
+  date: Date;
+  totalScore: number;
+  customSim: boolean;
+  scorePerAptitude?: AptitudeScore[];
+}
+
+export interface AptitudeScore {
+  uuid: string;
+  aptitude: Aptitude;
+  date: Date;
+  totalScore: number;
+}

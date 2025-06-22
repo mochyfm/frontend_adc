@@ -1,0 +1,13 @@
+.render-scores-body {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  padding: 15px 50px;
+  border-radius: 10px;
+  background-color: var(--extra-color-secondary);
+  margin-bottom: 40px;
+}

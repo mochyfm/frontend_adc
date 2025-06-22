@@ -1,0 +1,109 @@
+.schedule-event {
+  background-color: var(--color-secondary);
+  border-radius: 10px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 20px 20px;
+  color: var(--font-color);
+  text-wrap: nowrap;
+  min-width: 475px;
+}
+
+.schedule-information,
+.schedule-type-and-teacher {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: 10px 0px;
+}
+
+.schedule-information {
+  font-size: 1.25rem;
+  text-align: left;
+}
+
+.schedule-information h4:last-of-type {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: 15px;
+}
+
+.schedule-type-and-teacher {
+  text-align: right;
+  font-size: 1.3rem;
+}
+
+.schedule-type-and-teacher h4 {
+  padding: 10px 30px;
+  border-radius: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* ESTILOS TARJETAS EVENTOS */
+
+.clase-obligatoria {
+  background-color: var(--bg-clase-obligatoria);
+  color: var(--color-clase-obligatoria);
+}
+
+.clase-psicotécnicos {
+  background-color: var(--bg-clase-psicotecnicos);
+  color: var(--color-clase-psicotecnicos);
+}
+
+.clase-repaso {
+  background-color: var(--bg-clase-repaso);
+  color: var(--color-clase-repaso);
+}
+
+.ori-et {
+  background-color: var(--bg-ori-et);
+  color: var(--color-ori-et);
+}
+
+.ori-ea {
+  background-color: var(--bg-ori-ea);
+  color: var(--color-ori-ea);
+}
+
+.ori-armada {
+  background-color: var(--bg-ori-armada);
+  color: var(--color-ori-armada);
+}
+
+.ori-imt {
+  background-color: var(--bg-ori-imt);
+  color: var(--color-ori-imt);
+}
+
+.debate {
+  background-color: var(--bg-debate);
+  color: var(--color-debate);
+}
+
+.intensivo {
+  background-color: var(--bg-intensivo);
+  color: var(--color-intensivo);
+}
+
+.entrevista {
+  background-color: var(--bg-entrevista);
+  color: var(--color-entrevista);
+}
+
+.repaso-simulacro {
+  background-color: var(--bg-repaso-simulacro);
+  color: var(--color-repaso-simulacro);
+}
+
+.default {
+  background-color: var(--bg-default-event);
+  color: var(--color-default-event);
+}
+
+/* FIN - ESTILOS TARJETAS EVENTOS */

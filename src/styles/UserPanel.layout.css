@@ -34,3 +34,26 @@
     z-index: 100;
   }
 }
+
+::-webkit-scrollbar {
+  width: 12px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--user-panel-leftbar-scroll-color) !important;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--user-panel-leftbar-scroll-color) !important;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: var(--user-panel-leftbar-scroll-color) !important;
+}
