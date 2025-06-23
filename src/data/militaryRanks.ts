@@ -231,9 +231,9 @@ const empleosArmadaBuques: EmpleoInfo[] = [
     army: "Armada",
   },
   {
-    nombre: "Vicealmirante",
+    nombre: "ViceAlmirante",
     scale: "Oficiales",
-    insigniaUrl: "/common/empleos/armada/armada/ofi/Vicealmirante.png",
+    insigniaUrl: "/common/empleos/armada/armada/ofi/ViceAlmirante.png",
     army: "Armada",
   },
   {

@@ -32,7 +32,7 @@ export type Empleo =
   | "Capitán de Navío"
   | "Comodoro"
   | "Contralmirante"
-  | "Vicealmirante"
+  | "ViceAlmirante"
   | "Almirante"
   | "Almirante General"
   | "Capitán General"
