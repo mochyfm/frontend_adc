@@ -26,6 +26,8 @@ const renderTypeOfEventBackground = (typeOfEvent: EventType): string => {
       return "entrevista";
     case "Simulacro":
       return "repaso-simulacro";
+    case "Físicas":
+      return "ori-fisicas";
     default:
       return "default";
   }

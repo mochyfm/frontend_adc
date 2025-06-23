@@ -88,6 +88,9 @@
   --bg-ori-armada: var(--color-armada);
   --color-ori-armada: var(--extra-color-primary);
 
+  --bg-ori-fisicas: var(--extra-color-primary-alt); 
+  --color-ori-fisicas: var(--extra-color-primary);
+
   --bg-ori-imt: var(--color-imt);
   --color-ori-imt: var(--extra-color-primary);
 

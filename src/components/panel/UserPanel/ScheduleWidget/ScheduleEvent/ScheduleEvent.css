@@ -81,6 +81,11 @@
   color: var(--color-ori-imt);
 }
 
+.ori-fisicas {
+  background-color: var(--bg-ori-fisicas);
+  color: var(--color-ori-fisicas);
+}
+
 .debate {
   background-color: var(--bg-debate);
   color: var(--color-debate);
