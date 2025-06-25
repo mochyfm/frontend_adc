@@ -24,7 +24,12 @@
 
 .left-panel-bar-toggle-button {
   left: 0;
-  z-index: 50;
+  z-index: 200;
+}
+
+.left-panel-bar-body.closed .left-panel-bar-toggle-button {
+  pointer-events: auto;
+  z-index: 200;
 }
 
 .left-panel-bar {
@@ -36,8 +41,31 @@
   scrollbar-color: var(--user-panel-leftbar-scroll-color) transparent;
 }
 
+.left-panel-bar-body.closed {
+  pointer-events: none;
+  position: absolute;
+  width: 500px;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
 @media (max-width: 500px) {
   .left-panel-bar-body {
     width: 100%;
+  }
+}
+
+@media (max-width: 1300px) {
+  .left-panel-bar-body.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1000;
+  }
+
+  .user-panel-body.overlay-mode {
+    margin-left: 0 !important;
   }
 }

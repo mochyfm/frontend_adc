@@ -2,23 +2,49 @@
 import gsap from "gsap";
 import LeftPanelBar from "@/components/panel/LeftPanelBar";
 import UserPanel from "@/components/panel/UserPanel";
-import '@/styles/UserPanel.page.css'
+import "@/styles/UserPanel.page.css";
 import React, { useEffect, useRef, useState } from "react";
 
 const Page = () => {
   const leftPanelRef = useRef<HTMLDivElement>(null);
   const userPanelRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(true);
+  const [isOverlay, setIsOverlay] = useState(false);
 
   const panelWidth = 500;
 
-  const animatePanels = (open: boolean, isMobile: boolean) => {
+  // Detectar si debe activarse modo overlay
+  const checkOverlay = () => {
+    setIsOverlay(window.innerWidth <= 1300);
+  };
+
+  useEffect(() => {
+    checkOverlay();
+    window.addEventListener("resize", checkOverlay);
+
+    const panel = leftPanelRef.current;
+    const content = userPanelRef.current;
+
+    if (!panel || !content) return;
+
+    if (window.innerWidth <= 1300) {
+      gsap.set(panel, { x: isOpen ? 0 : "-100%" });
+      gsap.set(content, { marginLeft: 0 });
+    } else {
+      gsap.set(panel, { x: isOpen ? 0 : -panelWidth });
+      gsap.set(content, { marginLeft: isOpen ? panelWidth : 0 });
+    }
+
+    return () => window.removeEventListener("resize", checkOverlay);
+  }, []);
+
+  const animatePanels = (open: boolean) => {
     if (!leftPanelRef.current || !userPanelRef.current) return;
 
     const panel = leftPanelRef.current;
     const content = userPanelRef.current;
 
-    if (isMobile) {
+    if (isOverlay) {
       const hiddenX = -panel.offsetWidth;
 
       if (open) {
@@ -35,11 +61,7 @@ const Page = () => {
         gsap.fromTo(
           panel,
           { x: "-100%" },
-          {
-            x: 0,
-            duration: 0.3,
-            ease: "power3.out",
-          }
+          { x: 0, duration: 0.3, ease: "power3.out" }
         );
       }
     } else {
@@ -62,11 +84,7 @@ const Page = () => {
         gsap.fromTo(
           panel,
           { x: -panelWidth },
-          {
-            x: 0,
-            duration: 0.3,
-            ease: "power3.out",
-          }
+          { x: 0, duration: 0.3, ease: "power3.out" }
         );
         gsap.to(content, {
           marginLeft: panelWidth,
@@ -78,52 +96,28 @@ const Page = () => {
   };
 
   const togglePanel = () => {
-    const isMobile = window.innerWidth <= 999;
-    animatePanels(isOpen, isMobile);
+    animatePanels(isOpen);
     setIsOpen(!isOpen);
   };
 
-  useEffect(() => {
-    const isMobile = window.innerWidth <= 999;
-
-    if (!leftPanelRef.current || !userPanelRef.current) return;
-
-    const panel = leftPanelRef.current;
-    const content = userPanelRef.current;
-
-    if (isMobile) {
-      gsap.set(panel, { x: isOpen ? 0 : "-100%" });
-      gsap.set(content, { marginLeft: 0 });
-    } else {
-      gsap.set(panel, {
-        x: isOpen ? 0 : -panelWidth,
-      });
-
-      gsap.set(content, {
-        marginLeft: isOpen ? panelWidth : 0,
-      });
-    }
-  }, []);
-
   const toggleSearchComponent = () => {
-    alert('Hola');
-  }
+    alert("Hola");
+  };
 
   return (
     <>
-      <div className="left-panel-bar-body">
-        <LeftPanelBar
-          togglePanel={togglePanel}
-          isOpen={isOpen}
-          parentRef={leftPanelRef}
-          toggleSearchComponent={toggleSearchComponent}
-        />
-      </div>
+      <LeftPanelBar
+        togglePanel={togglePanel}
+        isOpen={isOpen}
+        isOverlay={isOverlay}
+        parentRef={leftPanelRef}
+        toggleSearchComponent={toggleSearchComponent}
+      />
       <div
-        className="user-panel-body"
+        className={`user-panel-body ${isOverlay ? "overlay-mode" : ""}`}
         ref={userPanelRef}
         style={{
-          marginLeft: isOpen ? panelWidth : 0,
+          marginLeft: !isOverlay && isOpen ? panelWidth : 0,
           transition: "margin-left 0.3s ease",
         }}
       >

@@ -8,7 +8,7 @@
   margin: 20px 20px;
   color: var(--font-color);
   text-wrap: nowrap;
-  min-width: 475px;
+  max-width: 100%;
 }
 
 .schedule-information,
@@ -112,3 +112,45 @@
 }
 
 /* FIN - ESTILOS TARJETAS EVENTOS */
+
+@media (max-width: 700px) {
+  .schedule-information,
+  .schedule-type-and-teacher {
+    flex-direction: column;
+    margin: 20px 0px;
+    width: 100%;
+  }
+
+  .schedule-information > * {
+    margin: 10px 0px;
+    text-align: start;
+  }
+
+  .schedule-information h4:first-of-type {
+    background-color: var(--color-primary);
+    width: 50%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .schedule-information h4:last-of-type {
+    margin-left: 0px;
+  }
+
+  .schedule-type-and-teacher > * {
+    margin: 10px 0px;
+    text-align: center;
+    text-overflow: ellipsis;
+  }
+
+  .schedule-open-full-calendar {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .schedule-information h4:first-of-type {
+    width: 100%;
+  }
+}

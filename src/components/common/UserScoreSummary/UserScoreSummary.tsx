@@ -6,7 +6,11 @@ import { lastSimulacresExample, lastTestsExample } from "@/utils/Utils.scores";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import gsap from "gsap";
 
-function UserScoreSummary() {
+interface UserScoreSummaryProps {
+  className?: string;
+}
+
+function UserScoreSummary({ className } : UserScoreSummaryProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<"left" | "right">("right");
   const panelRef = useRef<HTMLDivElement>(null);
@@ -62,7 +66,7 @@ function UserScoreSummary() {
   const currentPanel = panels[currentIndex];
 
   return (
-    <div className="user-score-panel-body">
+    <div className={`user-score-panel-body ${className && className}`}>
       <button
         className={`user-score-panel-button ${
           currentIndex === 0 ? "disabled" : ""

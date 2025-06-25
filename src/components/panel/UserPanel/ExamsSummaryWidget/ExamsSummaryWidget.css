@@ -42,6 +42,7 @@
 .exams-summary-button:hover,
 .exams-important-summary-button:hover {
   background-color: var(--bg-default);
+  cursor: pointer;
 }
 
 .exams-summary-button:hover {
@@ -72,4 +73,32 @@
   font-size: 1.5rem;
   font-family: var(--type-2-ff);
   font-weight: 300;
+}
+
+@media (max-width: 800px) {
+  .exams-summary-block {
+    min-height: 750px;
+    height: auto;
+  }
+  .non-display-on-phone {
+    display: none !important;
+  }
+  .exams-summary-buttons-block,
+  .exams-summary-row:first-of-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .exams-summary-button,
+  .exams-important-summary-name {
+    font-size: 1.75rem;
+  }
+
+  .exams-important-summary-data {
+    font-size: 1.3rem;
+  }
 }

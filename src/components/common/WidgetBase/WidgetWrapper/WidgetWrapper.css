@@ -1,15 +1,33 @@
 .widget-wrapper {
   position: relative;
   width: 100%;
-  height: 100%;
   grid-column: span 2;
+  display: block;
+}
+
+.widget-wrapper__container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-height: 1px; /* previene colapso si hay fade-out total */
 }
 
 .widget-wrapper__child {
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
-  transition: opacity 0.3s ease-in-out;
+  width: 100%;
+  box-sizing: border-box;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+  z-index: 0;
+}
+
+.widget-wrapper__child.active {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative; /* ahora este sí empuja el layout */
+  z-index: 1;
 }

@@ -9,7 +9,7 @@ function ExamsSummaryWidget() {
 
   return (
     <div className="exams-summary-block">
-      <UserScoreSummary />
+      <UserScoreSummary className="non-display-on-phone"/>
       <div className="exams-summary-buttons-block">
         <div className="exams-summary-row">
           <button

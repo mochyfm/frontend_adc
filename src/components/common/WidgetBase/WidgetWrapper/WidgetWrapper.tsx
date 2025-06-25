@@ -62,27 +62,20 @@ const WidgetWrapper: React.FC<WidgetWrapperProps> = ({
   };
 
   return (
-    <div
-      className="widget-wrapper"
-      ref={containerRef}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={() => {}}
-    >
-      {childrenArray.map((child, i) => (
-        <div
-          key={i}
-          className="widget-wrapper__child"
-          ref={(el) => {
-            widgetRefs.current[i] = el;
-          }}
-          style={{
-            opacity: i === index ? 1 : 0,
-            pointerEvents: i === index ? "auto" : "none",
-          }}
-        >
-          {child}
-        </div>
-      ))}
+    <div className="widget-wrapper" ref={containerRef}>
+      <div className="widget-wrapper__container">
+        {childrenArray.map((child, i) => (
+          <div
+            key={i}
+            className={`widget-wrapper__child ${i === index ? "active" : ""}`}
+            ref={(el) => {
+              widgetRefs.current[i] = el;
+            }}
+          >
+            {child}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
