@@ -1,18 +1,18 @@
 export const renderWeekDay = (weekDay: number) => {
   switch (weekDay) {
-    case 0:
-      return "Lunes";
     case 1:
-      return "Martes";
+      return "Lunes";
     case 2:
-      return "Miércoles";
+      return "Martes";
     case 3:
-      return "Jueves";
+      return "Miércoles";
     case 4:
-      return "Viernes";
+      return "Jueves";
     case 5:
-      return "Sábado";
+      return "Viernes";
     case 6:
+      return "Sábado";
+    case 7:
       return "Domingo";
     default:
       return "Día Inválido";
