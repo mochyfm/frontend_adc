@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useMemo, useEffect } from "react";
 import "./MeritCalculator.css";
+import { FaWhatsapp } from "react-icons/fa";
+import ReadOnlyBox from "./ReadOnlyBox";
 
 const maxAciertos = 105;
 const maxPuntosAciertos = 7;
@@ -13,9 +15,9 @@ type Seccion =
   | "academico"
   | "idioma"
   | "carnet"
-  | "deportista"
   | "militar"
-  | "condecoracion";
+  | "condecoracion"
+  | "deportista";
 
 const opciones: Record<Seccion, { value: number; label: string }[]> = {
   academico: [
@@ -40,11 +42,6 @@ const opciones: Record<Seccion, { value: number; label: string }[]> = {
     { value: 3, label: "B (3 ptos)" },
     { value: 0, label: "Ninguno" },
   ],
-  deportista: [
-    { value: 30, label: "Sí, para vacante específica (30 ptos)" },
-    { value: 3, label: "Sí (3 ptos)" },
-    { value: 0, label: "No" },
-  ],
   militar: [
     { value: 2, label: "Cabo o superior (2 ptos)" },
     { value: 1, label: "Soldado / Marinero (1 pto)" },
@@ -58,6 +55,11 @@ const opciones: Record<Seccion, { value: number; label: string }[]> = {
     { value: 0.5, label: "Citación en la Orden General (0.5 ptos)" },
     { value: 0.25, label: "Mención Honorífica (0.25 ptos)" },
     { value: 0, label: "Ninguno" },
+  ],
+  deportista: [
+    { value: 30, label: "Sí, para vacante específica (30 ptos)" },
+    { value: 3, label: "Sí (3 ptos)" },
+    { value: 0, label: "No" },
   ],
 };
 
@@ -96,85 +98,118 @@ function controlarLimites(
   return num;
 }
 
-export default function CalculadoraBaremo() {
-  const [aciertos, setAciertos] = useState<number | "">(0);
-  const [baremoManual, setBaremoManual] = useState<number | "">("");
-  const [notaFinal, setNotaFinal] = useState<number | "">(0);
-  const [misiones, setMisiones] = useState<number | "">(0);
-  const [servicio, setServicio] = useState<number | "">(0);
-  const [radios, setRadios] = useState<RadiosState>({ ...radiosInicial });
-  const [editandoManual, setEditandoManual] = useState(false);
-  const [mostrarAyuda, setMostrarAyuda] = useState(false);
+type FormState = {
+  aciertos: number;
+  baremoManual: number;
+  notaFinal: number;
+  misiones: number;
+  servicio: number;
+  editandoManual: boolean;
+  mostrarAyuda: boolean;
+  mostrarEscalaMinisterio: boolean;
+};
 
-  // Suma de radios
+export default function CalculadoraBaremo() {
+  const [formState, setFormState] = useState<FormState>({
+    aciertos: 0,
+    baremoManual: 0,
+    notaFinal: 0,
+    misiones: 0,
+    servicio: 0,
+    editandoManual: false,
+    mostrarAyuda: false,
+    mostrarEscalaMinisterio: false,
+  });
+
+  const [radios, setRadios] = useState<RadiosState>({ ...radiosInicial });
+
   const sumaRadios = useMemo(
     () => secciones.reduce((acc, sec) => acc + Number(radios[sec] || 0), 0),
     [radios]
   );
 
-  // Sincronizar input con radios si no está editando manualmente
   useEffect(() => {
-    if (!editandoManual) {
-      setBaremoManual(
-        Math.min(
+    if (!formState.editandoManual) {
+      setFormState((prev) => ({
+        ...prev,
+        baremoManual: Math.min(
           sumaRadios +
-            Number(misiones || 0) * 0.5 +
-            Number(servicio || 0) * 0.25,
+            Number(formState.misiones || 0) * 0.5 +
+            Number(formState.servicio || 0) * 0.25,
           maxBaremo
-        )
-      );
+        ),
+      }));
     }
-  }, [sumaRadios, misiones, servicio, editandoManual]);
+  }, [
+    sumaRadios,
+    formState.misiones,
+    formState.servicio,
+    formState.editandoManual,
+  ]);
 
-  // Input manual: desmarcar todos los radios y poner en "Ninguno"
   const onChangeBaremoManual = (value: string | number) => {
-    setEditandoManual(true);
     const limpio = controlarLimites(value, 0, maxBaremo);
-    setBaremoManual(limpio);
+    setFormState((prev) => ({
+      ...prev,
+      editandoManual: true,
+      baremoManual: limpio === "" ? 0 : limpio,
+    }));
     setRadios({ ...radiosInicial });
   };
 
   const onBlurBaremoManual = () => {
-    if (baremoManual === "") setEditandoManual(false);
+    if (formState.baremoManual === 0) {
+      setFormState((prev) => ({ ...prev, editandoManual: false }));
+    }
   };
 
-  // Marcar cualquier radio: si el input manual tenía valor, lo vacía y salimos de modo manual
   const handleRadio = (seccion: Seccion, value: number) => {
     setRadios((prev) => ({
       ...prev,
       [seccion]: value,
     }));
-    setEditandoManual(false);
+    setFormState((prev) => ({ ...prev, editandoManual: false }));
   };
 
-  // Baremo real
   const baremo = useMemo(() => {
-    if (editandoManual && baremoManual !== "" && baremoManual !== 0) {
-      return Math.min(Number(baremoManual), maxBaremo);
+    if (formState.editandoManual && formState.baremoManual !== 0) {
+      return Math.min(Number(formState.baremoManual), maxBaremo);
     }
     let suma =
-      sumaRadios + Number(misiones || 0) * 0.5 + Number(servicio || 0) * 0.25;
+      sumaRadios +
+      Number(formState.misiones || 0) * 0.5 +
+      Number(formState.servicio || 0) * 0.25;
     return Math.min(suma, maxBaremo);
-  }, [baremoManual, sumaRadios, misiones, servicio, editandoManual]);
+  }, [
+    formState.baremoManual,
+    sumaRadios,
+    formState.misiones,
+    formState.servicio,
+    formState.editandoManual,
+  ]);
 
-  // Cálculo de nota final
   const calcularNotaFinal = () => {
-    if (aciertos === "" || isNaN(Number(aciertos))) return;
+    if (isNaN(Number(formState.aciertos))) return;
     const nota =
-      (Number(aciertos) / maxAciertos) * maxPuntosAciertos +
+      (Number(formState.aciertos) / maxAciertos) * maxPuntosAciertos +
       (baremo / maxBaremo) * maxPuntosBaremo;
-    setNotaFinal(Number(nota.toFixed(2)));
-    setMostrarAyuda(true);
+    setFormState((prev) => ({
+      ...prev,
+      notaFinal: Number(nota.toFixed(2)),
+      mostrarAyuda: nota <= 5.5,
+    }));
   };
 
-  // Calcular aciertos necesarios desde la nota final
   const calcularAciertosDesdeNota = () => {
-    if (notaFinal === "" || isNaN(Number(notaFinal))) return;
+    if (isNaN(Number(formState.notaFinal))) return;
     const parteBaremo = (baremo / maxBaremo) * maxPuntosBaremo;
-    const partePsico = Number(notaFinal) - parteBaremo;
+    const partePsico = Number(formState.notaFinal) - parteBaremo;
     let aciertosNecesarios = (partePsico * maxAciertos) / maxPuntosAciertos;
     aciertosNecesarios = Math.max(0, Math.min(maxAciertos, aciertosNecesarios));
-    setAciertos(Math.ceil(aciertosNecesarios));
+    setFormState((prev) => ({
+      ...prev,
+      aciertos: Math.ceil(aciertosNecesarios),
+    }));
   };
 
   return (
@@ -183,43 +218,64 @@ export default function CalculadoraBaremo() {
       autoComplete="off"
       onSubmit={(e) => e.preventDefault()}
     >
-      <h1>
+      <h1 className="visually-hidden">
         Oposiciones Fuerzas Armadas {currentYear ? currentYear : "2077"} -
         Calculadora de Baremo{" "}
       </h1>
+      <h2>Calculadora de Baremo</h2>
+
       <div className="merit-calculator-row">
         <label>
           <strong>Aciertos 70% (máx 105):</strong>
         </label>
         <input
+          onClick={() =>
+            setFormState((prev) => ({
+              ...prev,
+              mostrarEscalaMinisterio: !prev.mostrarEscalaMinisterio,
+            }))
+          }
           type="number"
-          value={aciertos}
+          value={formState.aciertos}
           min={0}
           max={maxAciertos}
-          className="input-field hits"
           onChange={(e) =>
-            setAciertos(controlarLimites(e.target.value, 0, maxAciertos))
+            setFormState((prev) => ({
+              ...prev,
+              aciertos: controlarLimites(e.target.value, 0, maxAciertos) || 0,
+            }))
           }
           onBlur={(e) =>
-            setAciertos(controlarLimites(e.target.value, 0, maxAciertos))
+            setFormState((prev) => ({
+              ...prev,
+              aciertos: controlarLimites(e.target.value, 0, maxAciertos) || 0,
+            }))
           }
         />
-        <input
-          type="number"
-          disabled
+        <ReadOnlyBox
           value={
-            aciertos !== "" && !isNaN(Number(aciertos))
-              ? ((Number(aciertos) * maxPuntosAciertos) / maxAciertos).toFixed(
-                  2
-                )
-              : ""
+            formState.mostrarEscalaMinisterio
+              ? (
+                  ((formState.aciertos / maxAciertos) *
+                    maxPuntosAciertos *
+                    10) /
+                  maxPuntosAciertos
+                ).toFixed(2)
+              : (
+                  (formState.aciertos * maxPuntosAciertos) /
+                  maxAciertos
+                ).toFixed(2)
           }
-        />{" "}
-        <button
-          type="button"
-          onClick={calcularNotaFinal}
-          className="button-primary"
-        >
+          title="Click para cambiar entre escala 7/3 y escala 10"
+          onClick={() =>
+            setFormState((prev) => ({
+              ...prev,
+              mostrarEscalaMinisterio: !prev.mostrarEscalaMinisterio,
+            }))
+          }
+        />
+
+        <button type="button" onClick={calcularNotaFinal}>
           Calcular Nota Final
         </button>
       </div>
@@ -230,69 +286,75 @@ export default function CalculadoraBaremo() {
         </label>
         <input
           type="number"
-          value={baremoManual}
+          value={formState.baremoManual}
           min={0}
           max={maxBaremo}
           step={1}
-          className="input-field manual-merit"
-          onFocus={() => setEditandoManual(true)}
+          onFocus={() =>
+            setFormState((prev) => ({ ...prev, editandoManual: true }))
+          }
           onBlur={onBlurBaremoManual}
           onChange={(e) => onChangeBaremoManual(e.target.value)}
         />
-        <input
-          type="number"
-          disabled
+        <ReadOnlyBox
           value={
-            aciertos !== "" && !isNaN(Number(aciertos))
-              ? ((Number(baremo) * maxPuntosBaremo) / maxBaremo).toFixed(2)
-              : ""
+            formState.mostrarEscalaMinisterio
+              ? (
+                  ((baremo / maxBaremo) * maxPuntosBaremo * 10) /
+                  maxPuntosBaremo
+                ).toFixed(2)
+              : ((baremo * maxPuntosBaremo) / maxBaremo).toFixed(2)
+          }
+          title="Click para cambiar entre escala 7/3 y escala 10"
+          onClick={() =>
+            setFormState((prev) => ({
+              ...prev,
+              mostrarEscalaMinisterio: !prev.mostrarEscalaMinisterio,
+            }))
           }
         />
       </div>
 
-      <div className="merit-calculator-row result">
+      <div className="merit-calculator-row">
         <label>
           <strong>Nota Final:</strong>
         </label>
         <input
           type="number"
-          value={notaFinal}
+          value={formState.notaFinal}
           min={0}
           max={maxNotaFinal}
           step={0.1}
           placeholder="Aquí aparece la nota final. Añádela a mano o cálculala arriba"
-          className="input-field final-grade"
+          className="delayed-col-span-2"
           onChange={(e) =>
-            setNotaFinal(controlarLimites(e.target.value, 0, maxNotaFinal))
+            setFormState((prev) => ({
+              ...prev,
+              notaFinal: controlarLimites(e.target.value, 0, maxNotaFinal) || 0,
+            }))
           }
           onBlur={(e) =>
-            setNotaFinal(controlarLimites(e.target.value, 0, maxNotaFinal))
+            setFormState((prev) => ({
+              ...prev,
+              notaFinal: controlarLimites(e.target.value, 0, maxNotaFinal) || 0,
+            }))
           }
         />
+
         <button
+          className="col-span-2"
           type="button"
           onClick={calcularAciertosDesdeNota}
-          className="button-secondary"
         >
           Calcular Aciertos Psicotécnicos
         </button>
       </div>
 
-      {mostrarAyuda && (
+      {formState.mostrarAyuda && (
         <div className="help-block" style={{ marginTop: "1em" }}>
           <div>Nosotros podemos ayudarte a mejorar esa nota.</div>
           <a href="https://api.whatsapp.com/send?phone=34628900407">
-            <img
-              src="https://academiadecombate.com/wp-content/uploads/2025/05/WhatsApp.svg"
-              alt="WhatsApp"
-              style={{
-                display: "inline-block",
-                verticalAlign: "middle",
-                marginRight: 8,
-                width: 24,
-              }}
-            />
-            Contáctanos
+            Contáctanos <FaWhatsapp />
           </a>
         </div>
       )}
@@ -319,38 +381,46 @@ export default function CalculadoraBaremo() {
             ))}
           </fieldset>
         ))}
-
-        <div className="merit-calculator-row">
-          <label>
-            <strong>Misiones internacionales (0.5 ptos c/u):</strong>
-          </label>
-          <input
-            type="number"
-            value={misiones}
-            min={0}
-            step={1}
-            className="input-field missions"
-            onChange={(e) =>
-              setMisiones(controlarLimites(e.target.value, 0, 99))
-            }
-          />
-        </div>
-        <div className="merit-calculator-row">
-          <label>
-            <strong>Años (o fracción) de servicio (0.25 ptos/año):</strong>
-          </label>
-          <input
-            type="number"
-            value={servicio}
-            min={0}
-            step={0.01}
-            className="input-field service"
-            onChange={(e) =>
-              setServicio(controlarLimites(e.target.value, 0, 99))
-            }
-          />
-        </div>
       </div>
+
+      <div className="merit-calculator-row">
+        <label className="col-span-2">
+          <strong>Misiones internacionales (0.5 ptos c/u):</strong>
+        </label>
+        <input
+          type="number"
+          value={formState.misiones}
+          min={0}
+          step={1}
+          className="input-field missions col-span-2"
+          onChange={(e) =>
+            setFormState((prev) => ({
+              ...prev,
+              misiones: controlarLimites(e.target.value, 0, 99) || 0,
+            }))
+          }
+        />
+      </div>
+
+      <div className="merit-calculator-row">
+        <label className="col-span-2">
+          <strong>Años (o fracción) de servicio (0.25 ptos/año):</strong>
+        </label>
+        <input
+          type="number"
+          value={formState.servicio}
+          min={0}
+          step={0.01}
+          className="input-field service col-span-2"
+          onChange={(e) =>
+            setFormState((prev) => ({
+              ...prev,
+              servicio: controlarLimites(e.target.value, 0, 99) || 0,
+            }))
+          }
+        />
+      </div>
+
       <footer className="merit-calculator-footer">
         Powered by
         <img src="/common/AdcWhiteLogo.png" />

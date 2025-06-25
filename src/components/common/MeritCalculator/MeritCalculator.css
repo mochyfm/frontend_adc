@@ -9,9 +9,26 @@
   border-radius: 15px;
   background-color: color-mix(in srgb, var(--button-bg-color) 50%, transparent);
   padding: 15px;
+  overflow: hidden;
 }
 
-.merit-calculator h1 {
+.merit-calculator::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/common/AdcWhiteLogo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  opacity: 0.03; /* ajusta aquí para que casi no se vea */
+  z-index: 0;
+}
+
+.merit-calculator > * {
+  position: relative;
+  z-index: 1;
+}
+.merit-calculator h2 {
   text-align: center;
   font-size: 45px;
   color: var(--font-color);
@@ -21,16 +38,13 @@
 }
 
 .merit-calculator-row {
-  text-align: center;
-  display: grid;
-  grid-row: auto;
-  grid-template-columns: 35% 15% 15% 25%;
-  grid-column-gap: 15px;
   align-items: center;
-  justify-content: space-between;
-  margin: 10px 0px;
-  min-width: 1000px;
-  overflow: hidden;
+  display: grid;
+  margin-top: 1rem;
+  align-content: center;
+  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  min-width: 900px;
 }
 
 .merit-calculator-row input {
@@ -47,26 +61,60 @@
 
 .merit-calculator input:disabled {
   background-color: var(--disabled-input-bg-color);
-}
-
-.merit-calculator-row.result {
-  display: grid;
-  grid-template-columns: 35% 15% 35% 15%;
-}
-
-.merit-calculator-row.result input {
-  margin-right: 30px;
-  text-align: center;
-}
-
-.merit-calculator-row.result button {
-  background-color: var(--color-primary);
+  color: var(--font-color);
 }
 
 .merit-calculator-row button {
   border-radius: 5px;
   padding: 5px 20px;
   background-color: var(--color-complementary);
+}
+
+.merit-calculator-row button:hover {
+  cursor: pointer;
+}
+
+.merit-calculator-row:nth-child(5) button {
+  background-color: var(--color-primary);
+  color: var(--font-color);
+}
+
+.radios-container {
+  display: grid;
+  margin: 20px 0px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+}
+
+.radios-container fieldset {
+  border: 2px solid var(--color-secondary);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 15px 0px;
+}
+
+.radios-container fieldset legend {
+  margin-top: 20px;
+  padding: 0px 15px;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--extra-color-secondary);
+}
+
+.radios-container fieldset input[type="radio"] {
+  margin: 15px 10px 0px 0px;
+  accent-color: var(--color-complementary);
+}
+
+.radios-container fieldset input[type="radio"]:checked:after {
+  color: var(--color-primary);
+}
+
+.radios-container fieldset label {
+  color: var(--font-color);
 }
 
 .merit-calculator-footer {
@@ -76,9 +124,54 @@
   font-size: 18px;
   display: flex;
   align-items: center;
+  margin-top: 30px;
 }
 
 .merit-calculator-footer img {
   margin-left: 20px;
   width: 80px;
+}
+
+.help-block {
+  background-color: var(--color-complementary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+}
+
+.help-block a {
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.help-block a:hover {
+  color: var(--contact-button-color);
+  text-decoration: none;
+}
+
+.help-block a svg {
+  margin-left: 10px;
+}
+
+@media (max-width: 985px) {
+  .merit-calculator-row {
+    grid-template-columns: 1fr;
+    min-width: 100%;
+  }
+  .delayed-col-span-2 {
+    grid-column: span 2;
+    background-color: var(--bg-color-final-score-important) !important;
+  }
+  .radios-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .merit-calculator::before {
+    background-size: cover;
+  }
 }

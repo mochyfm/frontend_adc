@@ -2,6 +2,7 @@
 
 :root {
   /* Colores principales */
+
   --color-primary: #494b32;
   --color-secondary: #26271d;
   --color-tertiary: #40422c;
@@ -12,6 +13,7 @@
   --extra-color-secondary: #c2c5a9;
 
   /* Color complementario */
+
   --color-complementary: #ff8800;
   --color-complementary-hover: #b65e00;
 
@@ -19,6 +21,7 @@
   --color-user-panel: var(--extra-color-primary);
 
   /* Fondos */
+
   --color-background: var(--color-tertiary);
   --color-background-linear-start: var(--color-quatertiary);
   --color-background-linear-end: var(--color-secondary);
@@ -38,6 +41,7 @@
   --pro-plan-card-color: #6600ff;
 
   /* Botones */
+
   --button-bg-color: #26271d;
   --button-icon-color: var(--extra-color-primary);
 
@@ -47,17 +51,20 @@
   --button-bg-active: var(--extra-color-primary);
   --button-icon-active: var(--color-quatertiary);
 
+  --contact-button-color: #6600ff;
+
   /* Inputs */
 
   --input-font-color: #26271d;
 
   --focus-input-color: #1c1c1c;
   --enabled-input-bg-color: #dee1e2;
-  --disabled-input-bg-color: #363636;
+  --disabled-input-bg-color: #555555;
 
   --outline-line-color: #131313;
 
   /* Texto e íconos */
+
   --icon-color: #ffffff;
   --font-color: #ffffff;
 
@@ -88,7 +95,7 @@
   --bg-ori-armada: var(--color-armada);
   --color-ori-armada: var(--extra-color-primary);
 
-  --bg-ori-fisicas: var(--extra-color-primary-alt); 
+  --bg-ori-fisicas: var(--extra-color-primary-alt);
   --color-ori-fisicas: var(--extra-color-primary);
 
   --bg-ori-imt: var(--color-imt);
@@ -131,11 +138,14 @@
 
   /* Color resumen simulacros */
 
-  --good-sim-score: #91D26E;
-  --ok-sim-score: #A1FF58;
-  --medium-sim-score: #FFAD5C;
-  --bad-sim-score: #FF3F3F;
+  --good-sim-score: #91d26e;
+  --ok-sim-score: #a1ff58;
+  --medium-sim-score: #ffad5c;
+  --bad-sim-score: #ff3f3f;
 
+  /* Merit Calc */
+
+  --bg-color-final-score-important: #ffad5c;
 }
 
 html,
@@ -182,17 +192,20 @@ button.disabled:hover {
 }
 
 /* Scrollbar para Chrome, Edge, Safari */
+
 ::-webkit-scrollbar {
   width: 12px; /* ancho de la barra lateral */
   background: transparent; /* fondo por defecto transparente */
 }
 
 /* Fondo de la barra (track) */
+
 ::-webkit-scrollbar-track {
   background: transparent; /* transparente por defecto */
 }
 
 /* El "thumb" (el elemento que arrastras) */
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-primary); /* rojo semi-transparente */
   border-radius: 6px;
@@ -200,11 +213,13 @@ button.disabled:hover {
 }
 
 /* Al pasar el ratón por encima del thumb */
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary); /* verde más fuerte al hacer hover */
 }
 
 /* Opcional: track con color al hacer hover en toda la barra */
+
 ::-webkit-scrollbar-track:hover {
   background: var(
     --color-primary
@@ -212,6 +227,7 @@ button.disabled:hover {
 }
 
 /* Scrollbar para Firefox */
+
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary) transparent; /* thumb | track */
