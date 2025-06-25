@@ -9,9 +9,10 @@ interface LeftPanelProps {
   togglePanel: () => void;
   isOpen: boolean;
   parentRef: React.RefObject<HTMLDivElement | null>;
+  toggleSearchComponent ?: () => void;
 }
 
-function LeftPanelBar({ isOpen, togglePanel, parentRef }: LeftPanelProps) {
+function LeftPanelBar({ isOpen, togglePanel, parentRef, toggleSearchComponent }: LeftPanelProps) {
   return (
     <>
       <div className="left-panel-bar-body">
@@ -24,7 +25,7 @@ function LeftPanelBar({ isOpen, togglePanel, parentRef }: LeftPanelProps) {
             <PanelBarButton
               buttonText="Buscar"
               buttonContent=""
-              onClick={() => alert("Hola")}
+              onClick={toggleSearchComponent}
             />
           </GroupPanel>
 

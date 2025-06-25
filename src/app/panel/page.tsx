@@ -105,6 +105,10 @@ const Page = () => {
     }
   }, []);
 
+  const toggleSearchComponent = () => {
+    alert('Hola');
+  }
+
   return (
     <>
       <div className="left-panel-bar-body">
@@ -112,6 +116,7 @@ const Page = () => {
           togglePanel={togglePanel}
           isOpen={isOpen}
           parentRef={leftPanelRef}
+          toggleSearchComponent={toggleSearchComponent}
         />
       </div>
       <div
