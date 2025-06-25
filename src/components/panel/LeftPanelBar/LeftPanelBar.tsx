@@ -1,5 +1,5 @@
 "use client";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaSearch } from "react-icons/fa";
 import "./LeftPanelBar.css";
 import UserProfileCard from "./UserProfileCard";
 import PanelBarButton from "./PanelBarButton";
@@ -24,7 +24,7 @@ function LeftPanelBar({ isOpen, togglePanel, parentRef, toggleSearchComponent }:
             <UserProfileCard />
             <PanelBarButton
               buttonText="Buscar"
-              buttonContent=""
+              buttonContent={<FaSearch/>}
               onClick={toggleSearchComponent}
             />
           </GroupPanel>

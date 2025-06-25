@@ -34,6 +34,23 @@
   padding: 40px 10px;
 }
 
+.image-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--user-panel-profile-background);
+  padding: 40px 10px;
+  font-size: 1.5rem;
+}
+
+.image-content svg {
+  margin-left: 20px;
+  font-size: 1.2rem;
+  transition: transform 0.4s ease;
+}
+
 .image-block-text {
   text-transform: uppercase;
   font-size: 1.4rem;
@@ -50,7 +67,7 @@
   opacity: 0;
 }
 
-.panel-bar-button-body:hover .image-block-text {
+.panel-bar-button-body:hover .image-block-text, .panel-bar-button-body:hover .image-content svg {
   transform: scale(1.1);
 }
 

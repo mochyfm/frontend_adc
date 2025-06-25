@@ -2,31 +2,40 @@
 import React from "react";
 import "./ExamsSummaryWidget.css";
 import UserScoreSummary from "@/components/common/UserScoreSummary";
+import { useRouter } from "next/navigation";
 
 function ExamsSummaryWidget() {
+  const router = useRouter();
+
   return (
     <div className="exams-summary-block">
       <UserScoreSummary />
       <div className="exams-summary-buttons-block">
         <div className="exams-summary-row">
-          <a className="exams-summary-button" href="/results">
+          <button
+            onClick={() => router.push("/results")}
+            className="exams-summary-button"
+          >
             Todos mis resultados
-          </a>
-          <a className="exams-summary-button" href="/simulacros/custom">
+          </button>
+          <button
+            className="exams-summary-button"
+            onClick={() => router.push("/simulacros/custom")}
+          >
             Personalizar un simulacro
-          </a>
+          </button>
         </div>
         <div className="exams-summary-row">
-          <a
+          <button
             className="exams-important-summary-button"
-            href="/simulacros/current"
+            onClick={() => router.push("/simulacros/current")}
           >
             <span className="exams-important-summary-name">Simulacro 6</span>
             <span className="exams-important-summary-data">
               {" "}
               (Hasta: 10/06/2025 a las 17:00 Hrs){" "}
             </span>
-          </a>
+          </button>
         </div>
       </div>
     </div>

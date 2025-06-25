@@ -2,12 +2,13 @@
 import React from "react";
 import "./PanelBarButton.css";
 import { ArmyType } from "@/types/CustomTypes";
+import { useRouter } from "next/navigation";
 
 interface PanelBarButtonProps {
   buttonText: string;
   buttonContent: string | React.ReactNode;
   link?: string;
-  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   army?: ArmyType;
 }
 
@@ -16,12 +17,21 @@ function PanelBarButton({
   buttonContent,
   link,
   onClick,
-  army
+  army,
 }: PanelBarButtonProps) {
   const isImage = typeof buttonContent === "string";
+  const router = useRouter();
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (link) {
+      router.push(link);
+    } else if (onClick) {
+      onClick(e);
+    }
+  };
 
   return (
-    <a className="panel-bar-button-body" href={link} onClick={onClick ?? (() => {})}>
+    <button className="panel-bar-button-body" onClick={handleClick}>
       {isImage ? (
         <div
           className="image-background"
@@ -36,7 +46,7 @@ function PanelBarButton({
           {buttonContent}
         </div>
       )}
-    </a>
+    </button>
   );
 }
 
