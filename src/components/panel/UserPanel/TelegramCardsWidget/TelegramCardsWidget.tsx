@@ -4,18 +4,13 @@ import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks"; // 👈 ¡Este es el clave!
 import React from "react";
 import "./TelegramCardsWidget.css";
+import WidgetBase from "@/components/common/WidgetBase";
 
-function TelegramCardsWidget({
-  id,
-  date,
-  media_type,
-  text,
-  user,
-}: TelegramBotMessage) {
+function TelegramCardsWidget() {
   return (
-    <div>
-
-    </div>
+    <WidgetBase>
+      <div>A</div>
+    </WidgetBase>
   );
 }
 

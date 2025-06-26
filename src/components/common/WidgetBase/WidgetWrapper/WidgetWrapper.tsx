@@ -16,15 +16,17 @@ const WidgetWrapper: React.FC<WidgetWrapperProps> = ({
 
   const [index, setIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(intervalMs);
+  const [isPaused, setIsPaused] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+
   const childrenArray = React.Children.toArray(children);
   const isMultiple = childrenArray.length > 1;
+
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   const animateToNext = () => {
     const nextIndex = (index + 1) % childrenArray.length;
-
     const currentEl = widgetRefs.current[index];
     const nextEl = widgetRefs.current[nextIndex];
 
@@ -44,26 +46,32 @@ const WidgetWrapper: React.FC<WidgetWrapperProps> = ({
     if (!isMultiple) return;
 
     timerRef.current = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1000) {
-          animateToNext();
-          return intervalMs;
-        }
-        return prev - 1000;
-      });
+      if (!isPaused) {
+        setTimeLeft((prev) => {
+          if (prev <= 1000) {
+            animateToNext();
+            return intervalMs;
+          }
+          return prev - 1000;
+        });
+      }
     }, 1000);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [index, isMultiple, intervalMs]);
+  }, [index, isMultiple, intervalMs, isPaused]);
 
-  const handleMouseEnter = () => {
-    if (isMultiple) setTimeLeft(intervalMs / 2);
-  };
+  const handleMouseEnter = () => setIsPaused(true);
+  const handleMouseLeave = () => setIsPaused(false);
 
   return (
-    <div className="widget-wrapper" ref={containerRef}>
+    <div
+      className="widget-wrapper"
+      ref={containerRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="widget-wrapper__container">
         {childrenArray.map((child, i) => (
           <div
