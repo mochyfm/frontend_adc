@@ -1,0 +1,41 @@
+.telegram-message {
+  background-color: var(--color-secondary);
+  color: var(--font-color);
+  margin: 20px 20px;
+  padding: 20px;
+  border-radius: 10px;
+  user-select: none;
+}
+
+.telegram-message-text {
+  margin: 20px 0px;
+}
+
+.telegram-tag {
+    
+}
+
+.telegram-message-date {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.telegram-direct-link {
+  text-decoration: underline;
+  transition: text-decoration 0.4s ease;
+}
+
+.telegram-direct-link:hover {
+  text-decoration: none;
+}
+
+.telegram-link {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+  margin: 20px 0px;
+  display: block;
+}
+
+.telegram-link:hover {
+  color: var(--link-hover-color);
+}

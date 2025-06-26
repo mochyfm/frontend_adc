@@ -132,3 +132,11 @@ export interface AptitudeScore {
   date: Date;
   totalScore: number;
 }
+
+export interface TelegramBotMessage {
+  id: number;
+  text: string | null;
+  user: number;
+  date: string;
+  media_type: "image" | "file" | null;
+}

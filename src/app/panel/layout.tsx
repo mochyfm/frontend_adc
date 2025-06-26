@@ -1,6 +1,6 @@
 import "@/styles/UserPanel.layout.css";
-import { SITE_URL } from "@/config";
 import { Metadata } from "next";
+import clientConfig from '../../config/client.config';
 
 /**
  * Metadatos para el Panel del Alumno:
@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     title: "Panel del Alumno | Academia de Combate",
     description:
       "Área privada para alumnos de Academia de Combate. Sigue tu progreso y accede a tus recursos de preparación.",
-    url: SITE_URL + "/panel",
+    url: clientConfig.siteUrl + "/panel",
     siteName: "Academia de Combate",
     images: [
       {
-        url: SITE_URL + "/common/favicon3.png",
+        url: clientConfig.siteUrl + "/common/favicon3.png",
         width: 1200,
         height: 630,
         alt: "Academia de Combate - Área del Alumno",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     description:
       "Accede a tu espacio personal de Academia de Combate. Revisa tu avance y entrena con nosotros.",
     card: "summary_large_image",
-    images: [SITE_URL + "/common/favicon3.png"],
+    images: [clientConfig.siteUrl + "/common/favicon3.png"],
   },
   icons: {
     icon: "/common/favicon3.png",

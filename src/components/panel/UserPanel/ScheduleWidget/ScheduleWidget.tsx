@@ -8,7 +8,6 @@ import WidgetBase from "@/components/common/WidgetBase";
 const renderCurrentDate = (): string => {
   const date = new Date();
   const weekDay = date.getDay();
-  console.log(weekDay);
   const day = date.getDate();
   const month = date.getMonth();
   const fullYear = date.getFullYear();

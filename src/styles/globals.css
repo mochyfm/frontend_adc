@@ -40,6 +40,11 @@
   --complete-plan-card-color: #00ff6a;
   --pro-plan-card-color: #6600ff;
 
+  /* Telegramcard colors */
+
+  --link-color: #8da4ea;
+  --link-hover-color: #2649b1;
+
   /* Botones */
 
   --button-bg-color: #26271d;
