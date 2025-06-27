@@ -19,8 +19,7 @@ const renderCurrentDate = (): string => {
 
 function ScheduleWidget() {
   return (
-    <WidgetBase>
-      <h2 className="schedule-widget-date">{renderCurrentDate()}</h2>
+    <WidgetBase header={renderCurrentDate()}>
       <div className="schedule-widget-event-list">
         {calendarEvents.map((calendarEvent,index) => {
           return <ScheduleEvent key={index} {...calendarEvent} />;

@@ -18,7 +18,9 @@ function BotMessageBox({
 
   return (
     <div className="telegram-message">
-      <p className="telegram-message-date">{new Date(date).toLocaleString().replace(',', ' -')}</p>
+      <p className="telegram-message-date">
+        {new Date(date).toLocaleString().replace(",", " -")}
+      </p>
 
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkBreaks]} // 👈 Añadir breaks
@@ -44,7 +46,10 @@ function BotMessageBox({
       {media_type === "image" && (
         <span className="telegram-tag">
           📷 Imagen adjunta{" "}
-          <a className="telegram-direct-link" href={`${SOCIAL_MEDIA.telegram.tablonAnuncios}`}>
+          <a
+            className="telegram-direct-link"
+            href={`${SOCIAL_MEDIA.telegram.tablonAnuncios}`}
+          >
             (Ver en telegram)
           </a>
         </span>
@@ -52,7 +57,10 @@ function BotMessageBox({
       {media_type === "file" && (
         <span className="telegram-tag">
           📎 Archivo adjunto{" "}
-          <a className="telegram-direct-link" href={`${SOCIAL_MEDIA.telegram.tablonAnuncios}`}>
+          <a
+            className="telegram-direct-link"
+            href={`${SOCIAL_MEDIA.telegram.tablonAnuncios}`}
+          >
             (Ver en telegram)
           </a>
         </span>

@@ -1,15 +1,3 @@
-.telegram-widget-header {
-  background-color: var(--extra-color-secondary);
-  text-transform: uppercase;
-  color: var(--color-primary);
-  text-align: center;
-  border-radius: 10px;
-  margin: 20px;
-  padding: 30px;
-  font-size: 2rem;
-  font-weight: 900;
-}
-
 .telegram-messages-holder {
   background-color: var(--extra-color-secondary);
   border-radius: 10px;
@@ -17,6 +5,7 @@
   margin: 20px;
   padding: 5px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .telegram-widget-button {

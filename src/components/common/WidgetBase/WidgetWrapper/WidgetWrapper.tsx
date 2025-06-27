@@ -73,17 +73,21 @@ const WidgetWrapper: React.FC<WidgetWrapperProps> = ({
       onMouseLeave={handleMouseLeave}
     >
       <div className="widget-wrapper__container">
-        {childrenArray.map((child, i) => (
-          <div
-            key={i}
-            className={`widget-wrapper__child ${i === index ? "active" : ""}`}
-            ref={(el) => {
-              widgetRefs.current[i] = el;
-            }}
-          >
-            {child}
-          </div>
-        ))}
+        {isMultiple ? (
+          childrenArray.map((child, i) => (
+            <div
+              key={i}
+              className={`widget-wrapper__child ${i === index ? "active" : ""}`}
+              ref={(el) => {
+                widgetRefs.current[i] = el;
+              }}
+            >
+              {child}
+            </div>
+          ))
+        ) : (
+          <div className="widget-wrapper__child active">{childrenArray[0]}</div>
+        )}
       </div>
     </div>
   );

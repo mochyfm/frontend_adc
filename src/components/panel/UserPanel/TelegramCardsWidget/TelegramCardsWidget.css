@@ -1,0 +1,25 @@
+.telegram-cards-body {
+  background-color: var(--extra-color-secondary);
+  height: 625px;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 5px;
+  overflow: hidden scroll;
+}
+
+.telegram-cards-button {
+  background-color: var(--extra-color-secondary);
+  cursor: pointer;
+  border-radius: 10px;
+  align-self: flex-start;
+  margin-left: 20px;
+  padding: 10px 30px;
+  font-size: 1.25rem;
+  font-weight: lighter;
+  transition: font-weight 0.2s, background 0.2s, color 0.2s;
+}
+.telegram-cards-button:hover {
+  background-color: var(--color-primary);
+  color: var(--extra-color-secondary);
+  font-weight: 300;
+}

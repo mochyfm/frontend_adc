@@ -11,10 +11,6 @@
   margin: 20px 0px;
 }
 
-.telegram-tag {
-    
-}
-
 .telegram-message-date {
   font-size: 1.5rem;
   font-weight: 600;
@@ -34,6 +30,8 @@
   transition: color 0.3s ease;
   margin: 20px 0px;
   display: block;
+  text-wrap: wrap;
+  width: 100%;
 }
 
 .telegram-link:hover {

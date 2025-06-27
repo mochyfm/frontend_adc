@@ -17,7 +17,7 @@ function UserPanel({ parentRef }: UserPanelProps) {
       <ScheduleWidget />
       <WidgetWrapper intervalSeconds={10}>
         <TelegramWidget />
-        <TelegramCardsWidget />
+        <TelegramCardsWidget/>
       </WidgetWrapper>
       <AptitudesWidget />
       <ExamsSummaryWidget />

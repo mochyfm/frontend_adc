@@ -59,11 +59,7 @@ const TelegramWidget = () => {
   }, []);
 
   return (
-    <WidgetBase>
-      <div className="telegram-widget-header">
-        <h2>Tablón de anuncios</h2>
-      </div>
-
+    <WidgetBase header="Tablón de anuncios">
       <div className="telegram-messages-holder">
         {loading ? (
           <div className="telegram-loading-spinner" />
@@ -78,7 +74,7 @@ const TelegramWidget = () => {
         onClick={() => router.push(`${SOCIAL_MEDIA.telegram.tablonAnuncios}`)}
         className="telegram-widget-button"
       >
-        Ir al tablón de alumnos
+        Ir al tablón de anuncios
       </button>
     </WidgetBase>
   );

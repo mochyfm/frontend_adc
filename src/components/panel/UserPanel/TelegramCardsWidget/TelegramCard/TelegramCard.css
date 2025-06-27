@@ -1,0 +1,41 @@
+.telegram-card-body {
+  display: flex;
+  margin: 20px;
+  color: var(--font-color);
+}
+
+.telegram-card-img {
+  width: 175px;
+  margin-right: 15px;
+}
+
+.telegram-card-content {
+  margin-top: 15px;
+}
+
+.telegram-card-content h2 {
+  text-transform: uppercase;
+}
+
+.telegram-card-content p {
+  margin-top: 30px;
+  font-weight: lighter;
+}
+
+.telegram-card-title {
+}
+
+.telegram-card-summary {
+}
+
+.fc-bg {
+  background-color: var(--fc-bg-color);
+}
+
+.aa-bg {
+  background-color: var(--aa-bg-color);
+}
+
+.psi-bg {
+  background-color: var(--psi-bg-color);
+}
