@@ -1,6 +1,7 @@
 .telegram-card-body {
   display: flex;
   margin: 20px;
+  padding: 20px;
   color: var(--font-color);
 }
 
@@ -32,4 +33,12 @@
 
 .psi-bg {
   background-color: var(--psi-bg-color);
+}
+
+@media (max-width: 640px) {
+    .telegram-card-body {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
